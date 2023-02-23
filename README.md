@@ -5,9 +5,9 @@ Welcome to the documentation pages of the _Linkpedia_!
 You can find here details about the product (or mini-app or module), from a high-level vision to low-level implementation decisions, a kind of Software Development Report, organized by discipline (as of Rational Unified Process): 
 
 * Business modeling 
-  * [Product Vision](https://github.com/FEUP-LEIC-ES-2022-23/templates/blob/main/docs/ProductVision.md)
-  * [Elevator Pitch](https://github.com/FEUP-LEIC-ES-2022-23/templates/blob/main/docs/ElevatorPitch.md)
-* [Requirements](https://github.com/FEUP-LEIC-ES-2022-23/templates/blob/main/docs/requirements.md)
+  * [Product Vision](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/blob/main/docs/ProductVision.md)
+  * [Elevator Pitch](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/blob/main/docs/ElevatorPitch.md)
+* [Requirements](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/blob/main/docs/requirements.md)
   * [Use Case Model](https://github.com/FEUP-LEIC-ES-2022-23/templates/blob/main/docs/requirements.md#Use-case-model)
   * [User stories](https://github.com/FEUP-LEIC-ES-2022-23/templates/blob/main/docs/requirements.md#User-stories)
   * [Domain model](https://github.com/FEUP-LEIC-ES-2022-23/templates/blob/main/docs/requirements.md#Domain-model)
