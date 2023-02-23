@@ -11,8 +11,7 @@ Indicate an  initial/tentative list of high-level features - high-level capabili
  - Feature 2 - Short description
 ...
 
-## Assumptions and dependencies
-Indicate an  initial/tentative list of assumptions and dependencies 
+## Assumptions and Dependencies
+We will retrieve the information we need from the Wikipedia API.
 
-- Student timetable from sigarra
-- 
+- Wikipedia
