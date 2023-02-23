@@ -26,7 +26,11 @@ Please contact us!
 
 Thank you!
 
-*team members names*
+#### Joaquim Afonso Marques da Cunha, up202108779
+#### João Mendes Silva Belchior, up202108777
+#### João Pedro Rodrigues Coutinho, up202108787
+#### Miguel Jorge Medeiros Garrido, up202108889
+#### Samuel Alexandre Cruz Moreira de Oliveira, up202108751
 
 ---
 
