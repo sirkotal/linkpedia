@@ -15,3 +15,4 @@ Indicate an  initial/tentative list of high-level features - high-level capabili
 We will retrieve the information we need from the Wikipedia API.
 
 - Wikipedia
+- Firebase
