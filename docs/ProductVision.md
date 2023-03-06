@@ -8,6 +8,7 @@ Wikipedia is one of the most important websites in the world, providing free, ea
 ## Main Features
 Linkpedia will feature:
  - User Comments - Users will be able to leave comments on every article and interact with each other.
+ - Wikipedia Article Visualization - Users will be able to access entire Wikipedia articles from within the app itself.
 
 ## Assumptions and Dependencies
 We will retrieve the information we need from the Wikipedia API.
