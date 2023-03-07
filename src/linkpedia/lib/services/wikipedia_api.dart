@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:linkpedia/models/article.dart';
+import 'package:linkpedia/models/wiki_article.dart';
 
 const String _wikipediaBaseUrl = "https://en.wikipedia.org/w/api.php?";
 
@@ -11,7 +11,7 @@ class WikipediaService {
 
   WikipediaService({ required this.numberOfArticles, required this.numberOfCharacters });
 
-  Future<List<Article>> fetchArticles(String searchQuery) async {
+  Future<List<WikiArticle>> fetchArticles(String searchQuery) async {
     searchQuery.trim();
     searchQuery.replaceAll(' ', '+');
 
@@ -33,7 +33,7 @@ class WikipediaService {
 
     final searchData = jsonDecode(searchResponse.body);
 
-    List<Article> articles = [];
+    List<WikiArticle> articles = [];
 
     for (int i = 0; i < numberOfArticles; i++) {
       String articleTitle = searchData[1][i];
@@ -62,7 +62,7 @@ class WikipediaService {
       final extractData = jsonDecode(extractResponse.body);
       String articleSummary = extractData['query']['pages'][0]['extract'];
 
-      articles.add(Article(title: articleTitle, summary: articleSummary, url: articleUrl));
+      articles.add(WikiArticle(title: articleTitle, summary: articleSummary, url: articleUrl));
     }
 
     return articles;
