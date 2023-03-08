@@ -11,7 +11,7 @@ class WikipediaService {
 
   WikipediaService({ required this.numberOfArticles, required this.numberOfCharacters });
 
-  Future<List<WikiArticle>> fetchArticles(String searchQuery) async {
+  Future<List<WikiArticle>> fetchArticles(http.Client client, String searchQuery) async {
     searchQuery.trim();
     searchQuery.replaceAll(' ', '+');
 
@@ -24,7 +24,7 @@ class WikipediaService {
       + 'origin=*&'                 // something to do with CORS
       + "search=$searchQuery";      // search parameter
 
-    final searchResponse = await http.get(Uri.parse(url));
+    final searchResponse = await client.get(Uri.parse(url));
 
     /* throw exception if there was an error fetching data */
     if (searchResponse.statusCode != 200) {
@@ -38,7 +38,7 @@ class WikipediaService {
     for (int i = 0; i < numberOfArticles; i++) {
       String articleTitle = searchData[1][i];
       String articleUrl = searchData[3][i];
-      String articleSummary = await fetchArticleSummary(articleTitle);
+      String articleSummary = await fetchArticleSummary(http.Client(), articleTitle);
 
       articles.add(WikiArticle(title: articleTitle, summary: articleSummary, url: articleUrl));
     }
@@ -46,7 +46,7 @@ class WikipediaService {
     return articles;
   }
 
-  Future<String> fetchArticleSummary(String articleTitle) async {
+  Future<String> fetchArticleSummary(http.Client client, String articleTitle) async {
     /* Wikipedia API Query Url */
     // ignore: prefer_interpolation_to_compose_strings
     String url = _wikipediaBaseUrl
@@ -60,7 +60,7 @@ class WikipediaService {
       + 'origin=*&'                     // something to do with CORS
       + "titles=$articleTitle";
 
-    final extractResponse = await http.get(Uri.parse(url));
+    final extractResponse = await client.get(Uri.parse(url));
 
     /* throw exception if there was an error fetching data */
     if (extractResponse.statusCode != 200) {
