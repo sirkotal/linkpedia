@@ -6,11 +6,12 @@ import 'package:http/testing.dart';
 import 'package:linkpedia/services/wikipedia_api.dart';
 
 void main() {
-  WikipediaService wikiApi = WikipediaService(numberOfArticles: 10, numberOfCharacters: 200);
+  // enough to test
+  WikipediaService wikiApi = WikipediaService(numberOfArticles: 3, numberOfCharacters: 50);
   group('fetchArticleSummary', () {
     test('returns article summary when http response is successful', () async {
       
-      String responseArticleSummary = "Tennis is a racket sport that is played either individually against a single opponent (singles) or between two teams of two players each (doubles). Each player uses a tennis racket that is strung with...";
+      String responseArticleSummary = "Tennis is a racket sport that is played either individually...";
       final mockHttpClient = MockClient((request) async {
         final response = {
           "batchcomplete": true,
@@ -34,8 +35,8 @@ void main() {
       expect(articleSummary, isA<String>());
       expect(articleSummary, responseArticleSummary);
 
-      // 200 characters or less because of $numberOfCharacters or 203 with '...' included
-      expect((articleSummary.length <= 200 || articleSummary.length == 203), true);
+      // 50 characters or less because of $numberOfCharacters or 53 with '...' included
+      expect((articleSummary.length <= 50 || articleSummary.length == 53), true);
     });
 
     test('throws an exception when http response is not successful', () async {
