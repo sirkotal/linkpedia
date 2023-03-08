@@ -9,7 +9,44 @@ class WikipediaService {
   final int numberOfArticles;
   final int numberOfCharacters;
 
-  WikipediaService({ required this.numberOfArticles, required this.numberOfCharacters });
+  // Dependency injection here to test fetchArticle (if null uses default else uses provided function)
+  final Future<String> Function(http.Client, String)? _fetchArticleSummary;
+
+  WikipediaService({ required this.numberOfArticles, required this.numberOfCharacters, Future<String> Function(http.Client, String)? fetchArticleSummary })
+    : _fetchArticleSummary = fetchArticleSummary;
+
+  Future<String> _defaultFetchArticleSummary(http.Client client, String articleTitle) async {
+    /* Wikipedia API Query Url */
+    // ignore: prefer_interpolation_to_compose_strings
+    String url = _wikipediaBaseUrl
+      + 'action=query&'
+      + 'prop=extracts&'                // extract Summary
+      + 'exchars=$numberOfCharacters&'  // cap extraction at $numberOfCharacters chars
+      + 'exlimit=1&'                    // limit to one article
+      + 'explaintext=True&'             // fetch data as plain text instead of HTML
+      + 'format=json&'                  // format to JSON
+      + 'formatversion=2&'              // removes need to get pageId before hand
+      + 'origin=*&'                     // something to do with CORS
+      + "titles=$articleTitle";
+
+    final extractResponse = await client.get(Uri.parse(url));
+
+    /* throw exception if there was an error fetching data */
+    if (extractResponse.statusCode != 200) {
+      throw Exception("Failed to load from Wikipedia API");
+    }
+
+    final extractData = jsonDecode(extractResponse.body);
+    
+    return extractData['query']['pages'][0]['extract'];
+  }
+
+  Future<String> fetchArticleSummary(http.Client client, String articleTitle) async {
+    if (_fetchArticleSummary == null) {
+      return _defaultFetchArticleSummary(client, articleTitle);
+    }
+    return _fetchArticleSummary!(client, articleTitle);
+  }
 
   Future<List<WikiArticle>> fetchArticles(http.Client client, String searchQuery) async {
     searchQuery.trim();
@@ -38,38 +75,18 @@ class WikipediaService {
     for (int i = 0; i < numberOfArticles; i++) {
       String articleTitle = searchData[1][i];
       String articleUrl = searchData[3][i];
-      String articleSummary = await fetchArticleSummary(http.Client(), articleTitle);
+
+      String articleSummary; 
+      try {
+        articleSummary = await fetchArticleSummary(http.Client(), articleTitle);
+      } on Exception {
+        throw Exception('Failed to fetch article summary');
+      }
 
       articles.add(WikiArticle(title: articleTitle, summary: articleSummary, url: articleUrl));
     }
 
     return articles;
-  }
-
-  Future<String> fetchArticleSummary(http.Client client, String articleTitle) async {
-    /* Wikipedia API Query Url */
-    // ignore: prefer_interpolation_to_compose_strings
-    String url = _wikipediaBaseUrl
-      + 'action=query&'
-      + 'prop=extracts&'                // extract Summary
-      + 'exchars=$numberOfCharacters&'  // cap extraction at $numberOfCharacters chars
-      + 'exlimit=1&'                    // limit to one article
-      + 'explaintext=True&'             // fetch data as plain text instead of HTML
-      + 'format=json&'                  // format to JSON
-      + 'formatversion=2&'              // removes need to get pageId before hand
-      + 'origin=*&'                     // something to do with CORS
-      + "titles=$articleTitle";
-
-    final extractResponse = await client.get(Uri.parse(url));
-
-    /* throw exception if there was an error fetching data */
-    if (extractResponse.statusCode != 200) {
-      throw Exception("Failed to load from Wikipedia API");
-    }
-
-    final extractData = jsonDecode(extractResponse.body);
-    
-    return extractData['query']['pages'][0]['extract'];
   }
 }
 
