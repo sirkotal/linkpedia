@@ -1,3 +1,3 @@
 Scenario: Edit profile
-    When: User edits his profile
-    Then: Give an option to change his account's settings
+    When user edits his profile
+    Then give an option to change his account's settings
