@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:linkpedia/screens/wiki_page/floating_buttons.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WikiPage extends StatefulWidget {
   final String url;
+  final String title;
   
-  const WikiPage({super.key, required this.url});
+  const WikiPage({super.key, required this.url, required this.title});
 
   @override
   State<WikiPage> createState() => _WikiPageState();
 }
 
 class _WikiPageState extends State<WikiPage> {
-  String title = '';
   final WebViewController _webViewController = WebViewController();
 
   @override
@@ -20,27 +21,17 @@ class _WikiPageState extends State<WikiPage> {
 
     _webViewController
       ..setJavaScriptMode(JavaScriptMode.disabled)
-      ..loadRequest(Uri.parse(widget.url))
-      ..setNavigationDelegate(NavigationDelegate(
-        onPageFinished: (url) async {
-          String? pageTitle = await _webViewController.getTitle();
-          
-          // Removes the ' - Wikipidia' from the title
-          pageTitle = pageTitle!.substring(0, pageTitle.length - 12);
-          setState(() {
-            title = pageTitle!;
-          });
-        }
-      ));
+      ..loadRequest(Uri.parse(widget.url));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title)
+        title: Text(widget.title)
       ),
       body: WebViewWidget(controller: _webViewController),
+      floatingActionButton: FloatingButtons(webViewController: _webViewController, url: widget.url)
     );
   }
 }
