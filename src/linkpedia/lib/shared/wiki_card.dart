@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linkpedia/models/wiki_article.dart';
+import 'package:linkpedia/screens/wiki_page.dart';
 
 class WikiCard extends StatelessWidget {
   final WikiArticle article;
@@ -16,7 +17,15 @@ class WikiCard extends StatelessWidget {
       ),
       child: InkWell(
         // TODO: navigate to wikipedia page
-        onTap: () { print(article.url); },
+        onTap: () {
+          print(article.url);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => WikiPage(url: article.url)
+            )
+          );
+        },
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
