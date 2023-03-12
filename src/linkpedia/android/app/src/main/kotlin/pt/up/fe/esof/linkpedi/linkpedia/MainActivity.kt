@@ -1,4 +1,4 @@
-package pt.up.fe.esof.linkpedi.linkpedia
+package pt.up.fe.esof.linkpedia.linkpedia
 
 import io.flutter.embedding.android.FlutterActivity
 
