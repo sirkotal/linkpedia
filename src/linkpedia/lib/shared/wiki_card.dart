@@ -11,7 +11,7 @@ class WikiCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Colors.grey[300],
-      margin: const EdgeInsets.all(15.0),
+      margin: const EdgeInsets.symmetric(vertical: 15.0),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.0),
       ),
