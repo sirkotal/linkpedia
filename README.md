@@ -14,7 +14,7 @@ You can find here details about the product (or mini-app or module), from a high
 * [Architecture and Design](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/blob/main/docs/ArchitectureAndDesign.md)
   * [Logical architecture](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/blob/main/docs/ArchitectureAndDesign.md#Logical-architecture)
   * [Physical architecture](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/blob/main/docs/ArchitectureAndDesign.md#Physical-architecture)
-  * [Vertical prototype]
+  * [Vertical prototype](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/releases/tag/iteration-0)
 * [Implementation]
 * [Test]
 * [Configuration and change management]
