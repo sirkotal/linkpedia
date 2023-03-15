@@ -10,7 +10,6 @@ In this section you should start by briefly describing the overall components of
 
 ### Logical architecture
 ![logicalview](https://user-images.githubusercontent.com/93836408/225163548-345a8303-6a3f-42a1-b36f-b8303cc20ec6.jpg)
-4f7ac7639.png)
 
 ### Physical architecture
 ![DeploymentView](https://user-images.githubusercontent.com/93836408/225172160-b0aeb616-8629-41ff-a63c-61f9dded3057.jpg)
