@@ -72,7 +72,7 @@ class WikipediaService {
 
     List<WikiArticle> articles = [];
 
-    for (int i = 0; i < numberOfArticles; i++) {
+    for (int i = 0; i < searchData[1].length; i++) {
       String articleTitle = searchData[1][i];
       String articleUrl = searchData[3][i];
 
