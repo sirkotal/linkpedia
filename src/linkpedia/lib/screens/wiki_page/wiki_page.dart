@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linkpedia/screens/wiki_page/floating_buttons.dart';
+import 'package:linkpedia/shared/bottom_bar.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WikiPage extends StatefulWidget {
@@ -31,7 +32,8 @@ class _WikiPageState extends State<WikiPage> {
         title: Text(widget.title)
       ),
       body: WebViewWidget(controller: _webViewController),
-      floatingActionButton: FloatingButtons(webViewController: _webViewController, url: widget.url)
+      floatingActionButton: FloatingButtons(webViewController: _webViewController, url: widget.url),
+      bottomNavigationBar: const BottomBar(),
     );
   }
 }

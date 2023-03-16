@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:linkpedia/screens/auth/test_homepage.dart';
 import 'package:linkpedia/screens/auth/test_login.dart';
 import 'package:linkpedia/models/user.dart';
+import 'package:linkpedia/screens/home_page/home_page.dart';
 import 'package:provider/provider.dart';
 
 
@@ -15,7 +15,7 @@ class AuthWrapper extends StatelessWidget {
     if (user == null) {
       return const AuthTest();
     } else {
-      return const AuthHome();
+      return const HomePage();
     }
   }
 }
