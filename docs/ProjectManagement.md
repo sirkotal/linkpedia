@@ -3,7 +3,7 @@
 ### [Sprint 0](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/releases/tag/iteration-0.1):
 
 #### Board  
-![Iteration](images/iteration_zero.png)
+![Iteration](../images/iteration_zero.png)
 
 * Iteration retrospective: 
   - What went well: teamwork, vertical slice, product vision;
