@@ -14,6 +14,7 @@ class _AuthTestState extends State<AuthTest> {
 
   String email = '';
   String password = '';
+  bool rememberMe = false;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,8 @@ class _AuthTestState extends State<AuthTest> {
                 ElevatedButton(
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      await _auth.signIn(email, password);
+                      await _auth.signIn(email, password, rememberMe);
+                      setState(() {});
                     }
                   },
                   child: const Text('Sign In'),
@@ -56,10 +58,37 @@ class _AuthTestState extends State<AuthTest> {
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       await _auth.register(email, password);
+                      setState(() {});
                     }
                   },
                   child: const Text('Register'),
                 ),
+                ElevatedButton(
+                  onPressed: () async {
+                    await _auth.signOut();
+                    setState(() {});
+                  },
+                  child: const Text('Sign Out'),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Checkbox(
+                      value: rememberMe,
+                      onChanged: (val) {
+                        setState(() {
+                          rememberMe = val!;
+                        });
+                      },
+                    ),
+                    const Text('Remember me')
+                  ],
+                ),
+                const SizedBox(height: 24.0),
+                if (_auth.isLogged())
+                  const Text('Logged in')
+                else
+                  const Text('Not logged in'),
               ],
             ),
           )
