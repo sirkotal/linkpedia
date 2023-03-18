@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:linkpedia/firebase_options.dart';
-import 'package:linkpedia/screens/search_page/search_page.dart';
+import 'package:linkpedia/screens/auth/test.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SearchPage(),
+      home: const AuthTest(),
     );
   }
 }
