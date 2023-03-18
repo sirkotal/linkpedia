@@ -12,6 +12,12 @@ class AuthService {
     return prefs.getBool('rememberMe') ?? false;
   }
 
+  Stream<linkpedia.User?> get user {
+    return _auth.userChanges().map((User? user) {
+      return user != null ? linkpedia.User(uid: user.uid) : null;
+    });
+  }
+
   Future<linkpedia.User?> signIn(String email, String password, bool rememberMe) async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(

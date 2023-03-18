@@ -63,13 +63,6 @@ class _AuthTestState extends State<AuthTest> {
                   },
                   child: const Text('Register'),
                 ),
-                ElevatedButton(
-                  onPressed: () async {
-                    await _auth.signOut();
-                    setState(() {});
-                  },
-                  child: const Text('Sign Out'),
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -84,11 +77,6 @@ class _AuthTestState extends State<AuthTest> {
                     const Text('Remember me')
                   ],
                 ),
-                const SizedBox(height: 24.0),
-                if (_auth.isLogged())
-                  const Text('Logged in')
-                else
-                  const Text('Not logged in'),
               ],
             ),
           )
