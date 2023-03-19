@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:linkpedia/models/user.dart' as linkpedia;
+import 'package:linkpedia/services/auth_exceptions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
@@ -34,11 +35,12 @@ class AuthService {
 
       return user;
     } on FirebaseAuthException catch (e) {
-      // TODO: Add error handling
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
+      if (e.code == 'invalid-email') {
+        throw InvalidEmailException('Invalid email');
       } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
+        throw WrongPasswordException('Wrong password');
+      } else if (e.code == 'user-not-found') {
+        throw UserNotFoundException('User not found');
       }
 
       return null;
@@ -63,11 +65,12 @@ class AuthService {
 
       return user;
     } on FirebaseAuthException catch (e) {
-      // TODO: Add error handling
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
+      if (e.code == 'invalid-email') {
+        throw InvalidEmailException('Invalid email');
       } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
+        throw EmailAlreadyInUseException('Email already registered');
+      } else if (e.code == 'weak-password') {
+        throw WeakPasswordException('Password is too weak');
       }
 
       return null;
