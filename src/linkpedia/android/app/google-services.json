@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1093481774875",
+    "project_id": "linkpedia-fa536",
+    "storage_bucket": "linkpedia-fa536.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093481774875:android:335b679324264d24831dbe",
+        "android_client_info": {
+          "package_name": "pt.up.fe.esof.linkpedia.linkpedia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1093481774875-tsafrcqq73hb0adjlmbug1jn2pnrkqim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0ylTcAX4smAnRxKYuQx8tnPY1Sh3-nQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1093481774875-tsafrcqq73hb0adjlmbug1jn2pnrkqim.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
