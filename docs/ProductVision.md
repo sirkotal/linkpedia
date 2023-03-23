@@ -3,7 +3,9 @@
 ## Vision Statement
 
 ### Looking to make Wikipedia a more complete experience.
-Wikipedia is one of the most important websites in the world, providing free, easy-to-access information to everyone on the Internet. However, as important as it might be, it lacks some Quality of Life features that would make it a much more enjoyable and complete experience; our goal is to provide one of those features, by allowing Wikipedia users to interact with each other through comment sections associated to each individual article. We are creating Linkpedia with every single Wikipedia user who would like to see the site evolve in terms of features in mind.
+Wikipedia is one of the most important websites in the world, providing free, easy-to-access information to everyone on the Internet. However, as important as it might be, it lacks some Quality of Life features that would make it a much more enjoyable and complete experience. 
+
+Our goal is to provide one of those features, by allowing Wikipedia users to interact with each other through comment sections associated to each individual article. We are creating Linkpedia with every single Wikipedia user who would like to see the site evolve in terms of features in mind.
 
 ## Main Features
 Linkpedia will feature:
