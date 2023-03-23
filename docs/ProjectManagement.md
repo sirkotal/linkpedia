@@ -13,13 +13,13 @@ The first iteration was in line with our expectations. We felt that we did bette
 - Although not perfect, our product vision did a good job in describing the overarching long-term goal of our product.
 - We worked well as a team and were able to tackle the challenges through constant communication and teamwork.
 
-## WHAT WENT WRONG
+### WHAT WENT WRONG
 
 - We overlooked some aspects of the project board organization, due to lack of research on how it should look upon the first iteration delivery.
 - We failed to allocate enough resources to the development of the UI mockups.
 - Both the domain model and physical architecture diagrams didn't get the attention they should have had.
 
-## WHAT TO DO NEXT
+### WHAT TO DO NEXT
 
 - Improve our knowledge of Flutter and Dart.
 - Redesign the physical architecture and domain model diagrams.
