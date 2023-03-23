@@ -1,12 +1,12 @@
-## Project management
+# Project management
 
-### [Sprint 0](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/releases/tag/iteration-0.1):
+## [Sprint 0](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/releases/tag/iteration-0.1):
 
-#### Retrospective  
+## Retrospective  
 
 The first iteration was in line with our expectations. We felt that we did better in areas in which we thought the performance would be worse, but had disappointing results in some areas we felt confident about.
 
-## WHAT WENT WELL
+### WHAT WENT WELL
 
 - The vertical slice of our application ended up exceeding our expectations; we were very happy with the version we delivered in iteration 0.
 - We feel confident the structure of our logical architecture diagram was well conceived.
@@ -29,8 +29,8 @@ The first iteration was in line with our expectations. We felt that we did bette
 
 Despite the issues we faced, we rised to the occasion and were able to deliver our first iteration succesfully; although far from perfect, we feel like we've created a solid basis for upcoming releases.
 
-### [Sprint 1]():
+## [Sprint 1]():
 
-#### Retrospective
+## Retrospective
 
 ![Start](../images/iteration_zero.png)
