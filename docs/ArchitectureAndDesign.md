@@ -12,9 +12,7 @@ In this section you should start by briefly describing the overall components of
 ![logicalview](https://user-images.githubusercontent.com/93836408/225163548-345a8303-6a3f-42a1-b36f-b8303cc20ec6.jpg)
 
 ### Physical architecture
-![DeploymentView](https://user-images.githubusercontent.com/93836408/225172160-b0aeb616-8629-41ff-a63c-61f9dded3057.jpg)
-
-
+![DeploymentView](https://user-images.githubusercontent.com/93833262/227269747-23c2948c-bb12-4874-b5b0-7affb25e4314.png)
 
 ### Vertical prototype
 To help on validating all the architectural, design and technological decisions made, we usually implement a vertical prototype, a thin vertical slice of the system.
