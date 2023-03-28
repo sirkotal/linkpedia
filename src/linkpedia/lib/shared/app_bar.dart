@@ -6,25 +6,42 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      child: IconTheme(
-        data: const IconThemeData(
-          color: Colors.deepPurple,
-          size: 36.0
+      leading: IconButton(
+        icon: const Icon(Icons.menu),
+        onPressed: () {
+          // TODO
+        },
+      ),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.settings),
+          onPressed: () {
+            // Handle settings button press
+          },
         ),
-      child: Container(
+      ],
+      iconTheme: const IconThemeData(
+        color: Colors.deepPurple,
+        size: 36.0,
+      ),
+      backgroundColor: Colors.white,
+      elevation: 0.0,
+      bottom: PreferredSize(
+        preferredSize: const Size.fromHeight(2.0),
+        child: Container(
           decoration: const BoxDecoration(
             border: Border(
               top: BorderSide(
                 color: Colors.deepPurple,
-                width: 2.0
-              )
-            )
-          ),  
-        )
-      )
+                width: 2.0,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
-
+    
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
