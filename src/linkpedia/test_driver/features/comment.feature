@@ -1,12 +1,12 @@
 Scenario: Add a comment
-    Given that I am in the comment section of an article
-    When I want to add a comment
-    Then I should be able to enter my comment in a text field and submit it
+    Given that the user is in the comment section of an article
+    When he wants to add a comment
+    Then he should be able to enter his comment in a text field and submit it
 
 Scenario: Delete a comment
-    Given that I have submitted a comment
-    When I want to delete my comment
-    Then I should be able to click on a delete button and remove my comment from the comment section
+    Given that the user has submitted a comment
+    When he wants to delete his comment
+    Then he should be able to click on a delete button and remove his comment from the comment section
 
 Scenario: Interact with a comment
     Given the user is viewing a comment
