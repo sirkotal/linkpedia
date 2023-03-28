@@ -33,7 +33,7 @@ class _WikiPageState extends State<WikiPage> {
       ),
       body: WebViewWidget(controller: _webViewController),
       floatingActionButton: FloatingButtons(webViewController: _webViewController, url: widget.url),
-      bottomNavigationBar: const BottomBar(),
+      bottomNavigationBar: const BottomBar(searchSelected: true),
     );
   }
 }

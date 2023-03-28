@@ -102,7 +102,7 @@ class _SearchResultsState extends State<SearchResults> {
           return const Center(child: CircularProgressIndicator());
         },
       ),
-      bottomNavigationBar: const BottomBar(),
+      bottomNavigationBar: const BottomBar(searchSelected: true),
     );
   }
 }

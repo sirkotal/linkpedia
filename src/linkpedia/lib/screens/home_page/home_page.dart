@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
       body: const Center(
         child: Text('The Home Page Indeed')
       ),
-      bottomNavigationBar: const BottomBar()
+      bottomNavigationBar: const BottomBar(homeSelected: true)
     );
   }
 }

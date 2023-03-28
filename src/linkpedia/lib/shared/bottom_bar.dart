@@ -1,46 +1,61 @@
 import 'package:flutter/material.dart';
 import 'package:linkpedia/screens/home_page/home_page.dart';
 import 'package:linkpedia/screens/search_page/search_page.dart';
+import 'package:linkpedia/utils/no_transition_router.dart';
 
 class BottomBar extends StatelessWidget {
-  const BottomBar({super.key});
+  final bool homeSelected;
+  final bool searchSelected;
+  
+  const BottomBar({super.key, this.homeSelected = false, this.searchSelected = false});
 
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      child: IconTheme(
-        data: const IconThemeData(
-          color: Colors.deepPurple,
-          size: 36.0
-        ),
-        child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              top: BorderSide(
-                color: Colors.deepPurple,
-                width: 2.0
-              )
+      child: Container(
+        decoration: const BoxDecoration(
+          border: Border(
+            top: BorderSide(
+              color: Colors.deepPurple,
+              width: 2.0
             )
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              IconButton(
-                icon: const Icon(Icons.home_outlined),
-                onPressed: () => Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomePage())
+          )
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            IconButton(
+              // Icon(Icons.home_outlined)
+              icon: Text(
+                homeSelected ?
+                  String.fromCharCode(Icons.home.codePoint) : String.fromCharCode(Icons.home_outlined.codePoint),
+                style: const TextStyle(
+                  fontFamily: 'MaterialIcons',
+                  fontSize: 36.0,
+                  color: Colors.deepPurple
                 ),
               ),
-              IconButton(
-                icon: const Icon(Icons.search),
-                onPressed: () => Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SearchPage())
+              onPressed: () => Navigator.pushReplacement(
+                context,
+                NoTransitionRouter(builder: (context) => const HomePage())
+              ),
+            ),
+            IconButton(
+              icon: Text(
+                String.fromCharCode(Icons.search_outlined.codePoint),
+                style: TextStyle(
+                  fontFamily: 'MaterialIcons',
+                  fontWeight: searchSelected ? FontWeight.bold : FontWeight.normal,
+                  fontSize: 36.0,
+                  color: Colors.deepPurple
                 ),
               ),
-            ],
-          ),
+              onPressed: () => Navigator.pushReplacement(
+                context,
+                NoTransitionRouter(builder: (context) => const SearchPage())
+              ),
+            ),
+          ],
         ),
       ),
     );
