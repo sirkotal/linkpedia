@@ -64,7 +64,10 @@ class BottomBar extends StatelessWidget {
               iconSize: 36.0,
               onPressed: () async {
                 await _auth.signOut();
-                NoTransitionRouter(builder: (context) => const Wrapper());
+                Navigator.pushReplacement(
+                  context,
+                  NoTransitionRouter(builder: (context) => const Wrapper())
+                );
               },
             )
           ],
