@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:linkpedia/screens/home_page/home_page.dart';
 import 'package:linkpedia/screens/search_page/search_page.dart';
+import 'package:linkpedia/services/authentication.dart';
 import 'package:linkpedia/utils/no_transition_router.dart';
 
 class BottomBar extends StatelessWidget {
   final bool homeSelected;
   final bool searchSelected;
+
+  final AuthService _auth = AuthService();
   
-  const BottomBar({super.key, this.homeSelected = false, this.searchSelected = false});
+  BottomBar({super.key, this.homeSelected = false, this.searchSelected = false});
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +33,7 @@ class BottomBar extends StatelessWidget {
                 homeSelected ?
                   (Icons.home) : (Icons.home_outlined)),
               color: Colors.deepPurple,  
-              iconSize: 36.0, 
-              isSelected: true,
+              iconSize: 36.0,
               onPressed: () => Navigator.pushReplacement(
                 context,
                 NoTransitionRouter(builder: (context) => const HomePage())
@@ -53,6 +55,16 @@ class BottomBar extends StatelessWidget {
                 NoTransitionRouter(builder: (context) => const SearchPage())
               ),
             ),
+            IconButton(
+              icon: const Icon(
+                Icons.logout,
+              ),
+              color: Colors.deepPurple,  
+              iconSize: 36.0,
+              onPressed: () async {
+                await _auth.signOut();
+              },
+            )
           ],
         ),
       ),

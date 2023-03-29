@@ -62,7 +62,7 @@ class _SearchPageState extends State<SearchPage> {
           ),
         )
       ),
-      bottomNavigationBar: const BottomBar(searchSelected: true),
+      bottomNavigationBar: BottomBar(searchSelected: true),
     );
   }
 }

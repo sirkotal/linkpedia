@@ -17,9 +17,14 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Linkpedia'),
       ),
       body: const Center(
-        child: Text('The Home Page Indeed')
+        child: Text(
+          'Welcome to Linkpedia!',
+          style: TextStyle(
+            fontSize: 24.0
+          ),
+        )
       ),
-      bottomNavigationBar: const BottomBar(homeSelected: true)
+      bottomNavigationBar: BottomBar(homeSelected: true)
     );
   }
 }
