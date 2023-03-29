@@ -47,3 +47,27 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
+
+class BottomLeftArcClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    const rad = Radius.elliptical(75, 50);
+
+    path.lineTo(0, size.height);
+    path.lineTo(0, rad.y);
+    path.arcToPoint(
+      Offset(rad.x, 0),
+      radius: rad,
+      clockwise: true,
+    );
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return true;
+  }
+}
