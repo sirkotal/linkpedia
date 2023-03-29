@@ -2,9 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:linkpedia/firebase_options.dart';
 import 'package:linkpedia/models/user.dart';
-import 'package:linkpedia/screens/auth/test_wrapper.dart';
 import 'package:linkpedia/services/authentication.dart';
 import 'package:provider/provider.dart';
+import 'package:linkpedia/screens/wrapper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,7 +47,7 @@ class _LinkpediaState extends State<Linkpedia> {
             return StreamProvider<User?>.value(
               value: _auth.user,
               initialData: null,
-              child: const AuthWrapper()
+              child: const Wrapper()
             );
           } else {
             return const Scaffold(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:linkpedia/screens/home_page/home_page.dart';
 import 'package:linkpedia/screens/search_page/search_page.dart';
+import 'package:linkpedia/screens/wrapper.dart';
 import 'package:linkpedia/services/authentication.dart';
 import 'package:linkpedia/utils/no_transition_router.dart';
 
@@ -63,6 +64,7 @@ class BottomBar extends StatelessWidget {
               iconSize: 36.0,
               onPressed: () async {
                 await _auth.signOut();
+                NoTransitionRouter(builder: (context) => const Wrapper());
               },
             )
           ],
