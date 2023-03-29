@@ -79,5 +79,8 @@ class AuthService {
 
   Future<void> signOut() async {
     await _auth.signOut();
+
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setBool('rememberMe', false);
   }
 }
