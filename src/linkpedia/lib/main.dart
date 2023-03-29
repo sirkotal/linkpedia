@@ -38,7 +38,7 @@ class _LinkpediaState extends State<Linkpedia> {
     return MaterialApp(
       title: 'Linkpedia',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
       ),
       home: FutureBuilder(
         future: _autoSignIn(),
