@@ -26,15 +26,12 @@ class BottomBar extends StatelessWidget {
           children: <Widget>[
             IconButton(
               // Icon(Icons.home_outlined)
-              icon: Text(
+              icon: Icon(
                 homeSelected ?
-                  String.fromCharCode(Icons.home.codePoint) : String.fromCharCode(Icons.home_outlined.codePoint),
-                style: const TextStyle(
-                  fontFamily: 'MaterialIcons',
-                  fontSize: 36.0,
-                  color: Colors.deepPurple
-                ),
-              ),
+                  (Icons.home) : (Icons.home_outlined)),
+              color: Colors.deepPurple,  
+              iconSize: 36.0, 
+              isSelected: true,
               onPressed: () => Navigator.pushReplacement(
                 context,
                 NoTransitionRouter(builder: (context) => const HomePage())
@@ -48,6 +45,7 @@ class BottomBar extends StatelessWidget {
                   fontWeight: searchSelected ? FontWeight.bold : FontWeight.normal,
                   fontSize: 36.0,
                   color: Colors.deepPurple
+                  
                 ),
               ),
               onPressed: () => Navigator.pushReplacement(
