@@ -61,3 +61,9 @@ The second iteration yielded positive results, although we clearly misjudged the
 - Continue developing our app so that we have an improved product when the third iteration delivery comes around.
 
 Even though we could have planned this iteration a little more carefully, we think we overall did a good work with this iteration and we look forward to continue working on our project.
+
+## [Sprint 2]():
+
+## Retrospective
+
+![Start](../images/iteration_two_start.png)
