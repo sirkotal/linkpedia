@@ -41,7 +41,7 @@ The second iteration yielded positive results, although we clearly misjudged the
 
 ### WHAT WENT WELL
 
-- We were very happy with the quality of this iteration's delivery.
+- We were very happy with the quality of this iteration's delivery - the progress we made on the authentication system and the bottom bar was very positive.
 - We managed to improve upon our physical architecture diagram and product vision.
 - Once again, we worked well as a team and we managed to solve the problems that arised, through constant communication and teamwork.
 
