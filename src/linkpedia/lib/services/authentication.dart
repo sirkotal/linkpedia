@@ -14,9 +14,8 @@ class AuthService {
   }
 
   Stream<linkpedia.User?> get user {
-    return _auth.userChanges().map((User? user) {
-      return user != null ? linkpedia.User(uid: user.uid) : null;
-    });
+    return _auth.authStateChanges()
+      .map((User? user) => user != null ? linkpedia.User(uid: user.uid) : null);
   }
 
   Future<linkpedia.User?> signIn(String email, String password, bool rememberMe) async {
