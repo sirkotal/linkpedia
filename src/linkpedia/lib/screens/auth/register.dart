@@ -15,6 +15,10 @@ class _RegisterPageState extends State<RegisterPage> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
+  String username = '';
+  String? usernameError;
+  String name = '';
+  String? nameError;
   String email = '';
   String? emailError;
   String password = '';
@@ -42,6 +46,22 @@ class _RegisterPageState extends State<RegisterPage> {
               children: <Widget>[
                 TextFormField(
                   decoration: InputDecoration(
+                    hintText: 'Username',
+                    errorText: usernameError,
+                  ),
+                  validator: (val) => val!.isEmpty ? 'Enter a username' : null,
+                  onChanged: (val) => setState(() => username = val),
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    hintText: 'Name',
+                    errorText: nameError,
+                  ),
+                  validator: (val) => val!.isEmpty ? 'Enter a name' : null,
+                  onChanged: (val) => setState(() => name = val),
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
                     hintText: 'Email',
                     errorText: emailError,
                   ),
@@ -62,7 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       try {
-                        await _auth.register(email, password);
+                        await _auth.register(email, password, username, name);
                         widget.toggleView();
                       } on WeakPasswordException catch(e) {
                         setState(() {
@@ -75,6 +95,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       } on InvalidEmailException catch (e) {
                         setState(() {
                           emailError = e.message;
+                        });
+                      } on UserAlreadyExistsException catch (e) {
+                        setState(() {
+                          usernameError = e.message;
                         });
                       }
                     }
