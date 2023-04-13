@@ -35,29 +35,29 @@ class _LinkpediaState extends State<Linkpedia> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Linkpedia',
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-      ),
-      home: FutureBuilder(
-        future: _autoSignIn(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return StreamProvider<User?>.value(
-              value: _auth.user,
-              initialData: null,
-              child: const Wrapper()
-            );
-          } else {
-            return const Scaffold(
-              body: Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
-          }
-        },
-      ),
+    return StreamProvider<User?>.value(
+      value: _auth.user,
+      initialData: null,
+      child: MaterialApp(
+        title: 'Linkpedia',
+        theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+        ),
+        home: FutureBuilder(
+          future: _autoSignIn(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return const Wrapper();
+            } else {
+              return const Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            }
+          },
+        ),
+      )
     );
   }
 }

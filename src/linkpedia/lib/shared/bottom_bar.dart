@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:linkpedia/screens/home_page/home_page.dart';
 import 'package:linkpedia/screens/search_page/search_page.dart';
 import 'package:linkpedia/screens/wrapper.dart';
 import 'package:linkpedia/services/authentication.dart';
@@ -37,7 +36,7 @@ class BottomBar extends StatelessWidget {
               iconSize: 36.0,
               onPressed: () => Navigator.pushReplacement(
                 context,
-                NoTransitionRouter(builder: (context) => const HomePage())
+                NoTransitionRouter(builder: (context) => const Wrapper())
               ),
             ),
             IconButton(
@@ -62,13 +61,8 @@ class BottomBar extends StatelessWidget {
               ),
               color: Colors.deepPurple,  
               iconSize: 36.0,
-              onPressed: () {
-                _auth.signOut().then((value) {
-                  Navigator.pushReplacement(
-                    context,
-                    NoTransitionRouter(builder: (context) => const Wrapper())
-                  );
-                });
+              onPressed: () async {
+                await _auth.signOut();
               },
             )
           ],
