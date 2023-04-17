@@ -3,6 +3,7 @@ import 'package:linkpedia/models/wiki_article.dart';
 import 'package:linkpedia/services/wikipedia_api.dart';
 import 'package:http/http.dart' as http;
 import 'package:linkpedia/shared/bottom_bar.dart';
+import 'package:linkpedia/shared/loading.dart';
 import 'package:linkpedia/shared/wiki_card.dart';
 
 class SearchResults extends StatefulWidget {
@@ -99,7 +100,7 @@ class _SearchResultsState extends State<SearchResults> {
           } else if (snapshot.hasError) {
             Error();
           }
-          return const Center(child: CircularProgressIndicator());
+          return const Loading();
         },
       ),
       bottomNavigationBar: BottomBar(searchSelected: true),
