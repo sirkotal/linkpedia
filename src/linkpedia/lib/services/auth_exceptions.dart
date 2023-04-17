@@ -52,3 +52,14 @@ class EmailAlreadyInUseException implements Exception {
     return message;
   }
 }
+
+class UserAlreadyExistsException implements Exception {
+  final String message;
+
+  UserAlreadyExistsException(this.message);
+
+  @override
+  String toString() {
+    return message;
+  }
+}

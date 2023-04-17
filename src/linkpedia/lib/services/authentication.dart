@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:linkpedia/models/user.dart' as linkpedia;
 import 'package:linkpedia/services/auth_exceptions.dart';
+import 'package:linkpedia/services/database.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
@@ -46,15 +47,28 @@ class AuthService {
     }
   }
 
-  Future<linkpedia.User?> register(String email, String password) async {
+  Future<linkpedia.User?> register(String email, String password, String username, String name) async {
     try {
+      if (await DatabaseService.userExists(username)) {
+        throw UserAlreadyExistsException('User already exists');
+      }
+
       UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password
       );
 
       final linkpedia.User user = linkpedia.User(
-        uid: userCredential.user!.uid,
+        uid: userCredential.user!.uid
+      );
+
+      await DatabaseService(uid: user.uid).updateUserData(
+        linkpedia.UserData(
+          uid: user.uid,
+          username: username,
+          name: name,
+          email: email
+        )
       );
 
       // Be sure not to be logged in
