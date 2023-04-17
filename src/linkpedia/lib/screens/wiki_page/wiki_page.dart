@@ -28,19 +28,26 @@ class _WikiPageState extends State<WikiPage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: onBackPressed,
+      onWillPop: () async {
+        if (await _webViewController.canGoBack()) {
+          await _webViewController.goBack();
+        }
+        return false;
+      },
       child: Scaffold(
-        appBar: AppBar(title: Text(widget.title)),
+        appBar: AppBar(
+            title: Text(widget.title),
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () async {
+                Navigator.pop(context);
+              },
+            )),
         body: WebViewWidget(controller: _webViewController),
         floatingActionButton: FloatingButtons(
             webViewController: _webViewController, url: widget.url),
         bottomNavigationBar: BottomBar(searchSelected: true),
       ),
     );
-  }
-
-  Future<bool> onBackPressed() {
-    Navigator.pop(context);
-    return Future.value(false);
   }
 }
