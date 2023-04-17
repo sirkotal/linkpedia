@@ -6,7 +6,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 class WikiPage extends StatefulWidget {
   final String url;
   final String title;
-  
+
   const WikiPage({super.key, required this.url, required this.title});
 
   @override
@@ -27,13 +27,20 @@ class _WikiPageState extends State<WikiPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title)
+    return WillPopScope(
+      onWillPop: onBackPressed,
+      child: Scaffold(
+        appBar: AppBar(title: Text(widget.title)),
+        body: WebViewWidget(controller: _webViewController),
+        floatingActionButton: FloatingButtons(
+            webViewController: _webViewController, url: widget.url),
+        bottomNavigationBar: BottomBar(searchSelected: true),
       ),
-      body: WebViewWidget(controller: _webViewController),
-      floatingActionButton: FloatingButtons(webViewController: _webViewController, url: widget.url),
-      bottomNavigationBar: BottomBar(searchSelected: true),
     );
+  }
+
+  Future<bool> onBackPressed() {
+    Navigator.pop(context);
+    return Future.value(false);
   }
 }
