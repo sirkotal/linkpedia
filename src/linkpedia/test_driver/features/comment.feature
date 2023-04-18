@@ -1,25 +1,26 @@
 Scenario: Add a comment
-    Given the user is in the comment section of an article
-    When he wants to add a comment
-    Then he should be able to enter his comment in a text field 
-    And click the "Submit" button to post it
+    Given the user is on an article page
+    When he scrolls down to the comments section
+    And enters a comment in the text field
+    And presses the "Submit" button
+    Then he should see his comment displayed
 
 Scenario: Delete a comment
-    Given the user has submitted a comment
-    When he wants to delete his comment
-    Then he should be able to click on the "Delete" button 
-    And remove his comment from the comment section
+    Given the user has submitted a comment on an article page
+    When he scrolls down to the comments section
+    And presses the "Delete" button on his comment
+    Then his comment should be removed from the comments section
 
 Scenario: Interact with a comment
     Given the user is viewing a comment
     When he wants to interact with it
-    Then he should be able to click either a "Like" or "Dislike" button
+    And clicks either the "Like" or "Dislike" button
     Then the comment's number of likes either increases or decreases
 
 Scenario: Report a Comment
-    Given a comment has innapropriate content
-    And the user wants to report it
-    Then he should be able to click a "Report" button
+    Given a comment that has innapropriate content
+    And the user clicks on the "Report" button to report it
+    Then a warning should be sent to the devs about that comment
 
 Scenario: Create a comment signature for posted comments
     Given the user wants a predefined comment signature
