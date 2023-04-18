@@ -5,8 +5,10 @@ import 'comments.dart';
 
 class FloatingButtons extends StatefulWidget {
   final WebViewController webViewController;
+  final String title;
+  final String url;
 
-  const FloatingButtons({super.key, required this.webViewController});
+  const FloatingButtons({super.key, required this.webViewController, required this.title, required this.url});
 
   @override
   State<FloatingButtons> createState() => _FloatingButtonsState();
@@ -14,13 +16,10 @@ class FloatingButtons extends StatefulWidget {
 
 class _FloatingButtonsState extends State<FloatingButtons> {
   bool _showButtons = false;
-  String currentUrl = '';
 
   @override
   void initState() {
     super.initState();
-
-    widget.webViewController.currentUrl().then((value) => currentUrl = value ?? '');
   }
 
   @override
@@ -36,8 +35,10 @@ class _FloatingButtonsState extends State<FloatingButtons> {
             child: Visibility(
               visible: _showButtons,
               child: FloatingActionButton(
-                onPressed: () async {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Comments(articleUrl: currentUrl)));
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => Comments(articleTitle: widget.title, articleUrl: widget.url)
+                  ));
                   setState(() {
                     _showButtons = false;
                   });

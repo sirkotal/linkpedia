@@ -20,7 +20,7 @@ class WikiCard extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => WikiPage(url: article.url, title: article.title)
+              builder: (context) => WikiPage(url: article.url)
             )
           );
         },

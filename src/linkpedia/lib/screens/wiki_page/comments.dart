@@ -5,12 +5,14 @@ import 'package:linkpedia/screens/wiki_page/add_comment.dart';
 import 'package:linkpedia/services/authentication.dart';
 import 'package:linkpedia/services/comments_db.dart';
 import 'package:linkpedia/screens/wiki_page/comments_list.dart';
+import 'package:linkpedia/shared/bottom_bar.dart';
 import 'package:provider/provider.dart';
 
 class Comments extends StatefulWidget {
+  final String articleTitle;
   final String articleUrl;
 
-  const Comments({super.key, required this.articleUrl});
+  const Comments({super.key, required this.articleTitle, required this.articleUrl});
 
   @override
   State<Comments> createState() => _CommentsState();
@@ -27,10 +29,7 @@ class _CommentsState extends State<Comments> {
         appBar: AppBar(
           title: const Text('Comments'),
         ),
-        body: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.0),
-          child: CommentsList(),
-        ),
+        body: CommentsList(title: widget.articleTitle),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -43,6 +42,7 @@ class _CommentsState extends State<Comments> {
           },
           child: const Icon(Icons.add)
         ),
+        bottomNavigationBar: BottomBar(),
       ),
     );
   }

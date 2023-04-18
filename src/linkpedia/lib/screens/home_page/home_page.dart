@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:linkpedia/screens/search_page/search_page.dart';
 import 'package:linkpedia/shared/bottom_bar.dart';
 
 class HomePage extends StatefulWidget {
