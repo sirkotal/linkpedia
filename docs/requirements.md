@@ -67,5 +67,5 @@ Also provide a short textual description of each class.
 
 Example:
  <p align="center" justify="center">
-  <img src="https://github.com/FEUP-LEIC-ES-2022-23/templates/blob/main/images/DomainModel.png"/>
+  <img src="https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/blob/main/images/DomainModel.png"/>
 </p>
