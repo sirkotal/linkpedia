@@ -1,9 +1,8 @@
-
-## Requirements
+# Requirements
 
 In this section, you should describe all kinds of requirements for your module: functional and non-functional requirements.
 
-### Use case model 
+## Use case model 
 
 Create a use-case diagram in UML with all high-level use cases possibly addressed by your module, to clarify the context and boundaries of your application.
 
@@ -35,7 +34,7 @@ Example:
 | *Normal flow* | 1. The customer accesses the web page of the ticketing system.<br> 2. The system shows the list of events with tickets on-sale.<br> 3. The customer selects the event and the number of tickets.<br> 4. If wanted, the costumer may Choose Places.<br> 5. The system shows the total price to pay.<br> 6. The system redirects the customer to Electronic Payment.<br> 7. The system delivers the electronic tickets to the customer with a unique identifier and QR code. |
 | *Alternative flows and exceptions* | 1. [Payment failure] If, in step 6 of the normal flow the payment fails, the system gives the user the possibility to cancel or retry. |
 
-### User stories
+## User stories
 The user stories should be created as GitHub issues. Therefore, this section will *not* exist in your report, it is here only to explain how you should describe the requirements of the product as **user stories**. 
 
 A user story is a description of desired functionality told from the perspective of the user or customer. A starting template for the description of a user story is 
@@ -60,12 +59,8 @@ At the end, it is good to add a rough indication of the value of the user story 
 
 
 
-### Domain model
+## Domain model
 
-To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module. 
-Also provide a short textual description of each class. 
-
-Example:
  <p align="center" justify="center">
   <img src="https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/blob/main/images/DomainModel.png"/>
 </p>
