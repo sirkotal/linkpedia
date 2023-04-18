@@ -24,13 +24,14 @@ class _WikiPageState extends State<WikiPage> {
     _webViewController
       ..setJavaScriptMode(JavaScriptMode.disabled)
       ..loadRequest(Uri.parse(widget.url))
-      ..setNavigationDelegate(
-          NavigationDelegate(onPageFinished: (String url) async {
-        String? title = await _webViewController.getTitle();
-        setState(() {
-          pageTitle = title!.substring(0, title.length - ' - Wikipedia'.length);
-        });
-      }));
+      ..setNavigationDelegate(NavigationDelegate(
+        onPageFinished: (String url) async {
+          String? title = await _webViewController.getTitle();
+          setState(() {
+            pageTitle = title!.substring(0, title.length - ' - Wikipedia'.length);
+          });
+        }
+      ));
 
     pageTitle = widget.title;
   }
@@ -46,16 +47,18 @@ class _WikiPageState extends State<WikiPage> {
       },
       child: Scaffold(
         appBar: AppBar(
-            title: Text(pageTitle),
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () async {
-                Navigator.pop(context);
-              },
-            )),
+          title: Text(pageTitle),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () async {
+              Navigator.pop(context);
+            },
+          )
+        ),
         body: WebViewWidget(controller: _webViewController),
         floatingActionButton: FloatingButtons(
-            webViewController: _webViewController, url: widget.url),
+          webViewController: _webViewController
+        ),
         bottomNavigationBar: BottomBar(searchSelected: true),
       ),
     );
