@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 import 'comments.dart';
 
 class FloatingButtons extends StatefulWidget {
-  final WebViewController webViewController;
   final String title;
   final String url;
 
-  const FloatingButtons({super.key, required this.webViewController, required this.title, required this.url});
+  const FloatingButtons({super.key, required this.title, required this.url});
 
   @override
   State<FloatingButtons> createState() => _FloatingButtonsState();
