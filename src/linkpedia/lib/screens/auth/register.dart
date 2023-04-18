@@ -88,35 +88,38 @@ class _RegisterPageState extends State<RegisterPage> {
                 onChanged: (val) => setState(() => passwordConfirm = val),
               ),
               const SizedBox(height: 24),
-              SizedBox(
-                height: 28,
-                width: 120,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
-                      try {
-                        await _auth.register(email, password, username, name);
-                        widget.toggleView();
-                      } on WeakPasswordException catch (e) {
-                        setState(() {
-                          passwordError = e.message;
-                        });
-                      } on EmailAlreadyInUseException catch (e) {
-                        setState(() {
-                          email = e.message;
-                        });
-                      } on InvalidEmailException catch (e) {
-                        setState(() {
-                          emailError = e.message;
-                        });
-                      } on UserAlreadyExistsException catch (e) {
-                        setState(() {
-                          usernameError = e.message;
-                        });
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: SizedBox(
+                  height: 28,
+                  width: 120,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        try {
+                          await _auth.register(email, password, username, name);
+                          widget.toggleView();
+                        } on WeakPasswordException catch (e) {
+                          setState(() {
+                            passwordError = e.message;
+                          });
+                        } on EmailAlreadyInUseException catch (e) {
+                          setState(() {
+                            email = e.message;
+                          });
+                        } on InvalidEmailException catch (e) {
+                          setState(() {
+                            emailError = e.message;
+                          });
+                        } on UserAlreadyExistsException catch (e) {
+                          setState(() {
+                            usernameError = e.message;
+                          });
+                        }
                       }
-                    }
-                  },
-                  child: const Text('Register'),
+                    },
+                    child: const Text('Register'),
+                  ),
                 ),
               ),
             ],
