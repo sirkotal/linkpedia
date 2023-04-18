@@ -8,8 +8,9 @@ import 'package:uuid/uuid.dart';
 
 class AddComment extends StatefulWidget {
   final String articleUrl;
+  final String articleTitle;
 
-  const AddComment({super.key, required this.articleUrl});
+  const AddComment({super.key, required this.articleTitle, required this.articleUrl});
 
   @override
   State<AddComment> createState() => _AddCommentState();
@@ -38,6 +39,14 @@ class _AddCommentState extends State<AddComment> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Text(
+                'Comment on "${widget.articleTitle}"',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0
+                ),
+              ),
+              const SizedBox(height: 20.0),
               TextFormField(
                 maxLines: 10,
                 maxLength: 500,

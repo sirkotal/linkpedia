@@ -36,7 +36,7 @@ class _CommentsState extends State<Comments> {
               return StreamProvider<User?>.value(
                 value: AuthService().user,
                 initialData: null,
-                child: AddComment(articleUrl: widget.articleUrl),
+                child: AddComment(articleTitle: widget.articleTitle, articleUrl: widget.articleUrl),
               );
             }));
           },
