@@ -15,6 +15,7 @@ class WikiPage extends StatefulWidget {
 
 class _WikiPageState extends State<WikiPage> {
   final WebViewController _webViewController = WebViewController();
+  String pageTitle = '';
 
   @override
   void initState() {
@@ -22,7 +23,16 @@ class _WikiPageState extends State<WikiPage> {
 
     _webViewController
       ..setJavaScriptMode(JavaScriptMode.disabled)
-      ..loadRequest(Uri.parse(widget.url));
+      ..loadRequest(Uri.parse(widget.url))
+      ..setNavigationDelegate(
+          NavigationDelegate(onPageFinished: (String url) async {
+        String? title = await _webViewController.getTitle();
+        setState(() {
+          pageTitle = title!.substring(0, title.length - ' - Wikipedia'.length);
+        });
+      }));
+
+    pageTitle = widget.title;
   }
 
   @override
@@ -36,7 +46,7 @@ class _WikiPageState extends State<WikiPage> {
       },
       child: Scaffold(
         appBar: AppBar(
-            title: Text(widget.title),
+            title: Text(pageTitle),
             leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () async {
