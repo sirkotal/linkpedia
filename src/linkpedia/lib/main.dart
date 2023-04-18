@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:linkpedia/firebase_options.dart';
 import 'package:linkpedia/models/user.dart';
 import 'package:linkpedia/services/authentication.dart';
+import 'package:linkpedia/shared/loading.dart';
 import 'package:provider/provider.dart';
 import 'package:linkpedia/screens/wrapper.dart';
 
@@ -48,13 +49,8 @@ class _LinkpediaState extends State<Linkpedia> {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
               return const Wrapper();
-            } else {
-              return const Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
             }
+            return const Loading();
           },
         ),
       )

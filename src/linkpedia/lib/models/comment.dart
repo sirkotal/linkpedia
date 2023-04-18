@@ -1,0 +1,21 @@
+import 'package:intl/intl.dart';
+
+class Comment {
+  final String commentId; /* use uuid: `Uuid().v4()` */
+  final String userId;
+  final String articleUrl;
+  final String commentBody;
+  final DateTime timestamp; /* use microseconds since epoch: DateTime.now().microsecondsSinceEpoch.toString() */
+
+  Comment({
+    required this.commentId,
+    required this.userId,
+    required this.articleUrl,
+    required this.commentBody,
+    required this.timestamp
+  });
+
+  String timestampToString() {
+    return DateFormat('dd-MM-yyyy kk:mm').format(timestamp);
+  }
+}

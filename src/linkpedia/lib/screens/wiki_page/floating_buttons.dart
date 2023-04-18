@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import 'comments.dart';
+
 class FloatingButtons extends StatefulWidget {
   final WebViewController webViewController;
+  final String title;
+  final String url;
 
-  const FloatingButtons({super.key, required this.webViewController});
+  const FloatingButtons({super.key, required this.webViewController, required this.title, required this.url});
 
   @override
   State<FloatingButtons> createState() => _FloatingButtonsState();
@@ -14,11 +18,15 @@ class _FloatingButtonsState extends State<FloatingButtons> {
   bool _showButtons = false;
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
-        // TODO: for comments
         AnimatedOpacity(
           duration: const Duration(milliseconds: 500),
           opacity: _showButtons ? 1.0 : 0.0,
@@ -28,6 +36,9 @@ class _FloatingButtonsState extends State<FloatingButtons> {
               visible: _showButtons,
               child: FloatingActionButton(
                 onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => Comments(articleTitle: widget.title, articleUrl: widget.url)
+                  ));
                   setState(() {
                     _showButtons = false;
                   });
