@@ -12,3 +12,9 @@ Feature: Authentication
     When he enters his email and password
     And presses the "Login" button
     Then he should be redirected to the "Home" page
+
+  Scenario: Invalid Linkpedia login
+    Given the user is on the "Login" page
+    When he enters an invalid email or password
+    And presses the "Login" button
+    Then he should receive an error message
