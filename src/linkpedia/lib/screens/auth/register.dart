@@ -27,6 +27,8 @@ class _RegisterPageState extends State<RegisterPage> {
   String? passwordConfirmError;
   bool rememberMe = false;
 
+  bool _isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
           ElevatedButton(onPressed: () => widget.toggleView(), child: const Text('Login')),
         ],
       ),
-      body: ListView(
+      body: _isLoading ? const Center(child: CircularProgressIndicator()) : ListView(
         physics: const NeverScrollableScrollPhysics(),
         children: <Widget>[
           SingleChildScrollView(
@@ -96,6 +98,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             minimumSize: MaterialStateProperty.all(const Size(150, 50)),
                           ),
                           onPressed: () async {
+                            setState(() => _isLoading = true);
                             if (_formKey.currentState!.validate()) {
                               try {
                                 await _auth.register(email, password, username, name);
@@ -118,6 +121,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 });
                               }
                             }
+                            setState(() => _isLoading = false);
                           },
                           child: const Text(
                             'Register',
