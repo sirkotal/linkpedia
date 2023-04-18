@@ -24,83 +24,116 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-        actions: <Widget>[
-          ElevatedButton(
-            onPressed: () => widget.toggleView(),
-            child: const Text('Register')
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Center(
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: <Widget>[
-                TextFormField(
-                  key: const ValueKey('email'),
-                  decoration: InputDecoration(
-                    hintText: 'Email',
-                    errorText: emailError,
-                  ),
-                  validator: (val) => val!.isEmpty ? 'Enter an email' : null,
-                  onChanged: (val) => setState(() => email = val),
-                ),
-                TextFormField(
-                  key: const ValueKey('password'),
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: 'Password',
-                    errorText: passwordError,
-                  ),
-                  validator: (val) => val!.isEmpty ? 'Enter a password' : null,
-                  onChanged: (val) => setState(() => password = val),
-                ),
-                const SizedBox(height: 24),
-                ElevatedButton(
-                  key: const ValueKey('login'),
-                  onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
-                      try {
-                        await _auth.signIn(email, password, rememberMe);
-                        setState(() {}); // dont know if its needed
-                      } on UserNotFoundException catch(e) {
-                        setState(() {
-                          emailError = e.message;
-                        });
-                      } on WrongPasswordException catch(e) {
-                        setState(() {
-                          passwordError = e.message;
-                        });
-                      } on InvalidEmailException catch (e) {
-                        setState(() {
-                          emailError = e.message;
-                        });
-                      }
-                    }
-                  },
-                  child: const Text('Sign In'),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Checkbox(
-                      value: rememberMe,
-                      onChanged: (val) {
-                        setState(() {
-                          rememberMe = val!;
-                        });
-                      },
-                    ),
-                    const Text('Remember me')
-                  ],
-                ),
-              ],
+      body: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.deepPurple
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(height: 50,),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                children: <Widget>[
+                  Image.asset('assets/Logo.png'),
+                  Text("LINKPEDIA", style: TextStyle(color: Colors.white, fontSize: 40, fontFamily: 'KronaOne'),),
+                  SizedBox(height: 10,),
+                  Text("Welcome Back", style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w600),)
+
+                ],
+              ),
             ),
-          )
+            SizedBox(height: 20,),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(63), topRight: Radius.circular(63))
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: SingleChildScrollView(
+                    child: Center(
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          children: <Widget>[
+                            TextFormField(
+                              decoration: InputDecoration(
+                                hintText: 'Email',
+                                errorText: emailError,
+                              ),
+                              validator: (val) => val!.isEmpty ? 'Enter an email' : null,
+                              onChanged: (val) => setState(() => email = val),
+                            ),
+                            TextFormField(
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                hintText: 'Password',
+                                errorText: passwordError,
+                              ),
+                              validator: (val) => val!.isEmpty ? 'Enter a password' : null,
+                              onChanged: (val) => setState(() => password = val),
+                            ),
+                            const SizedBox(height: 24),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                Checkbox(
+                                  value: rememberMe,
+                                  onChanged: (val) {
+                                    setState(() {
+                                      rememberMe = val!;
+                                    });
+                                  },
+                                ),
+                                const Text('Remember me')
+                              ],
+                            ),
+                            Container(
+                              height: 50,
+                              width: MediaQuery.of(context).size.width,
+                              margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
+                              child: ElevatedButton(
+                                onPressed: () async {
+                                  if (_formKey.currentState!.validate()) {
+                                    try {
+                                      await _auth.signIn(email, password, rememberMe);
+                                      setState(() {}); // dont know if its needed
+                                    } on UserNotFoundException catch(e) {
+                                      setState(() {
+                                        emailError = e.message;
+                                      });
+                                    } on WrongPasswordException catch(e) {
+                                      setState(() {
+                                        passwordError = e.message;
+                                      });
+                                    } on InvalidEmailException catch (e) {
+                                      setState(() {
+                                        emailError = e.message;
+                                      });
+                                    }
+                                  }
+                                },
+                                child: const Text('LOGIN'),
+                                style: ButtonStyle(
+                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)))
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ),
+                  )
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
