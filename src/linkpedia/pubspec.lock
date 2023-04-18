@@ -227,7 +227,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_gherkin:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: flutter_gherkin
       sha256: bacda3ef810e116bd66582d59ba58457e51e64977df0c1821e1a4f689bdf0186
@@ -266,7 +266,7 @@ packages:
     source: sdk
     version: "0.0.0"
   gherkin:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: gherkin
       sha256: "7c835be5c28dc50f753caa30b4d8e2204d0617dc56fc019dca0fc70279d779b7"
@@ -274,7 +274,7 @@ packages:
     source: hosted
     version: "2.0.8"
   glob:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: glob
       sha256: "4515b5b6ddb505ebdd242a5f2cc5d22d3d6a80013789debfbda7777f47ea308c"
