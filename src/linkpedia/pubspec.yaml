@@ -97,7 +97,10 @@ flutter:
     - family: KronaOne
       fonts:
         - asset: fonts/KronaOne-Regular.ttf
-
+    - family: Poppins
+      fonts:
+        - asset: fonts/Poppins-SemiBold.ttf
+        
   # fonts:
   #   - family: Schyler
   #     fonts:

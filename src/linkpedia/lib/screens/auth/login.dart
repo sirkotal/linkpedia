@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.deepPurple
+          color: Colors.deepPurpleAccent
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,10 +38,9 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: <Widget>[
                   Image.asset('assets/Logo.png'),
-                  Text("LINKPEDIA", style: TextStyle(color: Colors.white, fontSize: 40, fontFamily: 'KronaOne'),),
+                  Text("LINKPEDIA", style: TextStyle(color: Colors.white, fontSize: 43, fontFamily: 'KronaOne'),),
                   SizedBox(height: 10,),
-                  Text("Welcome Back", style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w600),)
-
+                  Text("Welcome Back!", style: TextStyle(color: Colors.black, fontSize: 23, fontFamily: 'Poppins'),),
                 ],
               ),
             ),
@@ -124,7 +123,16 @@ class _LoginPageState extends State<LoginPage> {
                                     RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)))
                                 ),
                               ),
-                            )
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.transparent,
+                                foregroundColor: Colors.black,
+                                elevation: 0,
+                              ),
+                              onPressed: () => widget.toggleView(),
+                              child: const Text('Don`t have an account yet? Register')
+                            ),
                           ],
                         ),
                       )
