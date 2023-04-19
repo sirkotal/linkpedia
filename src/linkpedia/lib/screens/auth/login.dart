@@ -26,28 +26,28 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.deepPurpleAccent
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 50,),
+            const SizedBox(height: 50,),
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Column(
-                children: <Widget>[
+                children:  <Widget>[
                   Image.asset('assets/Logo.png'),
-                  Text("LINKPEDIA", style: TextStyle(color: Colors.white, fontSize: 43, fontFamily: 'KronaOne'),),
-                  SizedBox(height: 10,),
-                  Text("Welcome Back!", style: TextStyle(color: Colors.black, fontSize: 23, fontFamily: 'Poppins'),),
+                  const Text("LINKPEDIA", style: TextStyle(color: Colors.white, fontSize: 43, fontFamily: 'KronaOne'),),
+                  const SizedBox(height: 10,),
+                  const Text("Welcome Back!", style: TextStyle(color: Colors.black, fontSize: 23, fontFamily: 'Poppins'),),
                 ],
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Expanded(
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(63), topRight: Radius.circular(63))
                 ),
@@ -67,6 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                               validator: (val) => val!.isEmpty ? 'Enter an email' : null,
                               onChanged: (val) => setState(() => email = val),
                             ),
+                            const SizedBox(height: 8),
                             TextFormField(
                               obscureText: true,
                               decoration: InputDecoration(
@@ -76,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                               validator: (val) => val!.isEmpty ? 'Enter a password' : null,
                               onChanged: (val) => setState(() => password = val),
                             ),
-                            const SizedBox(height: 24),
+                            const SizedBox(height: 16),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
@@ -93,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             Container(
                               height: 50,
-                              width: MediaQuery.of(context).size.width,
+                              width: 300,
                               margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
                               decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
                               child: ElevatedButton(
@@ -117,11 +118,12 @@ class _LoginPageState extends State<LoginPage> {
                                     }
                                   }
                                 },
-                                child: const Text('LOGIN'),
                                 style: ButtonStyle(
+                                  backgroundColor: const MaterialStatePropertyAll<Color>(Colors.deepPurpleAccent),
                                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)))
+                                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)))
                                 ),
+                                child: const Text('LOGIN'),
                               ),
                             ),
                             ElevatedButton(
