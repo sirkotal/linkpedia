@@ -41,6 +41,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               children: <Widget>[
                 TextFormField(
+                  key: const ValueKey('email'),
                   decoration: InputDecoration(
                     hintText: 'Email',
                     errorText: emailError,
@@ -49,6 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                   onChanged: (val) => setState(() => email = val),
                 ),
                 TextFormField(
+                  key: const ValueKey('password'),
                   obscureText: true,
                   decoration: InputDecoration(
                     hintText: 'Password',
@@ -59,6 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 24),
                 ElevatedButton(
+                  key: const ValueKey('login'),
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       try {

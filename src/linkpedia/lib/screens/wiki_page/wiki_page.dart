@@ -67,7 +67,6 @@ class _WikiPageState extends State<WikiPage> {
         ),
         body: WebViewWidget(controller: _webViewController),
         floatingActionButton: FloatingButtons(
-          webViewController: _webViewController,
           title: pageTitle,
           url: currentUrl
         ),
