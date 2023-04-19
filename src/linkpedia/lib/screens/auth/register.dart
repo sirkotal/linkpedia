@@ -114,7 +114,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   val != password ? 'Passwords do not match!' : null,
                               onChanged: (val) => setState(() => passwordConfirm = val),
                             ),
-                            const SizedBox(height: 68),
+                            const SizedBox(height: 127),
                             SizedBox(
                               height: 50,
                               width: 300,
@@ -148,10 +148,10 @@ class _RegisterPageState extends State<RegisterPage> {
                                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                     RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)))
                                 ),
-                                child: const Text('Register'),
+                                child: const Text('REGISTER'),
                               ),
                             ),
-                            const SizedBox(height: 60),
+                            const SizedBox(height: 20),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.transparent,
