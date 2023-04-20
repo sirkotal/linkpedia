@@ -53,92 +53,97 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(24.0),
-                  child: SingleChildScrollView(
-                    child: Center(
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
-                          children: <Widget>[
-                            TextFormField(
-                              decoration: InputDecoration(
-                                hintText: 'Email',
-                                errorText: emailError,
-                              ),
-                              validator: (val) => val!.isEmpty ? 'Enter an email' : null,
-                              onChanged: (val) => setState(() => email = val),
-                            ),
-                            const SizedBox(height: 8),
-                            TextFormField(
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                hintText: 'Password',
-                                errorText: passwordError,
-                              ),
-                              validator: (val) => val!.isEmpty ? 'Enter a password' : null,
-                              onChanged: (val) => setState(() => password = val),
-                            ),
-                            const SizedBox(height: 16),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                  child: ListView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: <Widget>[
+                      SingleChildScrollView(
+                        child: Center(
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
                               children: <Widget>[
-                                Checkbox(
-                                  value: rememberMe,
-                                  onChanged: (val) {
-                                    setState(() {
-                                      rememberMe = val!;
-                                    });
-                                  },
+                                TextFormField(
+                                  decoration: InputDecoration(
+                                    hintText: 'Email',
+                                    errorText: emailError,
+                                  ),
+                                  validator: (val) => val!.isEmpty ? 'Enter an email' : null,
+                                  onChanged: (val) => setState(() => email = val),
                                 ),
-                                const Text('Remember me')
+                                const SizedBox(height: 8),
+                                TextFormField(
+                                  obscureText: true,
+                                  decoration: InputDecoration(
+                                    hintText: 'Password',
+                                    errorText: passwordError,
+                                  ),
+                                  validator: (val) => val!.isEmpty ? 'Enter a password' : null,
+                                  onChanged: (val) => setState(() => password = val),
+                                ),
+                                const SizedBox(height: 16),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                    Checkbox(
+                                      value: rememberMe,
+                                      onChanged: (val) {
+                                        setState(() {
+                                          rememberMe = val!;
+                                        });
+                                      },
+                                    ),
+                                    const Text('Remember me')
+                                  ],
+                                ),
+                                Container(
+                                  height: 50,
+                                  width: 300,
+                                  margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
+                                  child: ElevatedButton(
+                                    onPressed: () async {
+                                      if (_formKey.currentState!.validate()) {
+                                        try {
+                                          await _auth.signIn(email, password, rememberMe);
+                                          setState(() {}); // dont know if its needed
+                                        } on UserNotFoundException catch(e) {
+                                          setState(() {
+                                            emailError = e.message;
+                                          });
+                                        } on WrongPasswordException catch(e) {
+                                          setState(() {
+                                            passwordError = e.message;
+                                          });
+                                        } on InvalidEmailException catch (e) {
+                                          setState(() {
+                                            emailError = e.message;
+                                          });
+                                        }
+                                      }
+                                    },
+                                    style: ButtonStyle(
+                                      backgroundColor: const MaterialStatePropertyAll<Color>(Colors.deepPurpleAccent),
+                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)))
+                                    ),
+                                    child: const Text('LOGIN'),
+                                  ),
+                                ),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.transparent,
+                                    foregroundColor: Colors.black,
+                                    elevation: 0,
+                                  ),
+                                  onPressed: () => widget.toggleView(),
+                                  child: const Text('Don`t have an account yet? Register')
+                                ),
                               ],
                             ),
-                            Container(
-                              height: 50,
-                              width: 300,
-                              margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
-                              child: ElevatedButton(
-                                onPressed: () async {
-                                  if (_formKey.currentState!.validate()) {
-                                    try {
-                                      await _auth.signIn(email, password, rememberMe);
-                                      setState(() {}); // dont know if its needed
-                                    } on UserNotFoundException catch(e) {
-                                      setState(() {
-                                        emailError = e.message;
-                                      });
-                                    } on WrongPasswordException catch(e) {
-                                      setState(() {
-                                        passwordError = e.message;
-                                      });
-                                    } on InvalidEmailException catch (e) {
-                                      setState(() {
-                                        emailError = e.message;
-                                      });
-                                    }
-                                  }
-                                },
-                                style: ButtonStyle(
-                                  backgroundColor: const MaterialStatePropertyAll<Color>(Colors.deepPurpleAccent),
-                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)))
-                                ),
-                                child: const Text('LOGIN'),
-                              ),
-                            ),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.transparent,
-                                foregroundColor: Colors.black,
-                                elevation: 0,
-                              ),
-                              onPressed: () => widget.toggleView(),
-                              child: const Text('Don`t have an account yet? Register')
-                            ),
-                          ],
+                          )
                         ),
-                      )
-                    ),
+                      ),
+                    ],
                   )
                 ),
               ),
