@@ -62,8 +62,11 @@ The second iteration yielded positive results, although we clearly misjudged the
 
 Even though we could have planned this iteration a little more carefully, we think we overall did a good work with this iteration and we look forward to continue working on our project.
 
-## [Sprint 2]():
+## [Sprint 2](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/releases/tag/iteration-2):
 
 ## Retrospective
 
 ![Start](../images/iteration_two_start.png)
+
+![End](https://user-images.githubusercontent.com/93833262/233420570-7e20e1a4-8f87-4008-b152-e5e765aa5d5d.png)
+
