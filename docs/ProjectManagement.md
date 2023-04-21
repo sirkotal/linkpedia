@@ -100,4 +100,4 @@ Overall, we think this was our best iteration so far and we look forward to cont
 
 ## Retrospective
 
-![Start]()
+![Start](https://user-images.githubusercontent.com/93833262/233680381-e2c37a02-e4f0-4f77-aa95-120b6a1f8188.png)
