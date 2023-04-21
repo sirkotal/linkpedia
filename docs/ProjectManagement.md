@@ -82,7 +82,6 @@ We were extremely happy with the third delivery, as we were able to successfully
 ### WHAT WENT WRONG
 
 - A small issue in the Login screen prevented us from delivering it on this iteration.
-- We failed to get the Register screen's UI and the comments' frontend ready for this iteration.
 - We didn't allocate enough resources to getting the Gherkin acceptance tests where we wanted them to be.
 
 ### WHAT TO DO NEXT
