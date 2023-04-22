@@ -70,3 +70,33 @@ Even though we could have planned this iteration a little more carefully, we thi
 
 ![End](https://user-images.githubusercontent.com/93833262/233420570-7e20e1a4-8f87-4008-b152-e5e765aa5d5d.png)
 
+We were extremely happy with the third delivery, as we were able to successfully accomplish all the tasks that we had set out to do and delivered a functional version of our app.
+
+### WHAT WENT WELL
+
+- We were very satisfied with how this iteration's delivery turned out; with the comment section already functional and all pages up and running, the progress we made was very positive.
+- We managed to complete every task we had planned for this iteration.
+- We made a lot of improvements to areas of our project that were lacking (Domain Model, UI mockups...)
+- We worked really well as a team and were able to help each other through constant communication.
+
+### WHAT WENT WRONG
+
+- A small issue in the Login screen prevented us from delivering it on this iteration.
+- We didn't allocate enough resources to getting the Gherkin acceptance tests where we wanted them to be.
+
+### WHAT TO DO NEXT
+
+- Review and improve the existing user stories and acceptance tests.
+- Design more unit and acceptance tests and improve upon the existing ones.
+- Add either GIFs or images to our next changelog.
+- Wrap up the comments user story.
+- Take a better look at all the things we got right and try to improve upon them.
+- Continue developing our app so that we have a more complete product by the end of the fourth iteration.
+
+Overall, we think this was our best iteration so far and we look forward to continue working on our project.
+
+## [Sprint 3]():
+
+## Retrospective
+
+![Start](https://user-images.githubusercontent.com/93833262/233680381-e2c37a02-e4f0-4f77-aa95-120b6a1f8188.png)
