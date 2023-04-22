@@ -1,0 +1,17 @@
+on: pull_request
+
+jobs:
+  unit-test:
+    name: 'Unit Test'
+    runs-on: 'ubuntu-latest'
+    defaults:
+      run:
+        working-directory: './src/linkpedia'
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.11'
+          channel: 'stable'
+      - run: flutter pub get
+      - run: flutter test
