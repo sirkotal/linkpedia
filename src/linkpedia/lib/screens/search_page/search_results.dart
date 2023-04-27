@@ -60,11 +60,12 @@ class _SearchResultsState extends State<SearchResults> {
                 ),
                 onSubmitted: (String text) {
                   _textController.clear();
-                  Navigator.pushReplacement(
+                  Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
                       builder: (context) => SearchResults(query: text)
-                    )
+                    ),
+                    (Route<dynamic> route) => false
                   );
                 },
               ),

@@ -34,9 +34,10 @@ class BottomBar extends StatelessWidget {
                   (Icons.home) : (Icons.home_outlined)),
               color: Colors.deepPurple,  
               iconSize: 36.0,
-              onPressed: () => Navigator.pushReplacement(
+              onPressed: () => Navigator.pushAndRemoveUntil(
                 context,
-                NoTransitionRouter(builder: (context) => const Wrapper())
+                NoTransitionRouter(builder: (context) => const Wrapper()),
+                (Route<dynamic> route) => false
               ),
             ),
             IconButton(
@@ -50,9 +51,10 @@ class BottomBar extends StatelessWidget {
                   
                 ),
               ),
-              onPressed: () => Navigator.pushReplacement(
+              onPressed: () => Navigator.pushAndRemoveUntil(
                 context,
-                NoTransitionRouter(builder: (context) => const SearchPage())
+                NoTransitionRouter(builder: (context) => const SearchPage()),
+                (Route<dynamic> route) => false
               ),
             ),
             IconButton(
@@ -62,9 +64,10 @@ class BottomBar extends StatelessWidget {
               color: Colors.deepPurple,  
               iconSize: 36.0,
               onPressed: () async {
-                Navigator.pushReplacement(
+                Navigator.pushAndRemoveUntil(
                   context,
-                  NoTransitionRouter(builder: (context) => const Wrapper())
+                  NoTransitionRouter(builder: (context) => const Wrapper()),
+                  (Route<dynamic> route) => false
                 );
                 await _auth.signOut();
               },
