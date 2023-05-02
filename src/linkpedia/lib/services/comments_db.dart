@@ -9,7 +9,15 @@ class CommentsDatabaseService {
       'userId': comment.userId,
       'articleUrl': comment.articleUrl,
       'commentBody': comment.commentBody,
-      'timestamp': comment.timestamp.microsecondsSinceEpoch.toString()
+      'timestamp': comment.timestamp.microsecondsSinceEpoch,
+      'votes': comment.votes
+    });
+  }
+
+  static Future<void> updateComment(Comment comment) async {
+    return await commentsRef.doc(comment.commentId).update({
+      'commentBody': comment.commentBody,
+      'votes': comment.votes
     });
   }
 
@@ -24,7 +32,8 @@ class CommentsDatabaseService {
           userId: doc.get('userId'),
           articleUrl: doc.get('articleUrl'),
           commentBody: doc.get('commentBody'),
-          timestamp: DateTime.fromMicrosecondsSinceEpoch(int.parse(doc.get('timestamp')))
+          timestamp: DateTime.fromMicrosecondsSinceEpoch(doc.get('timestamp')),
+          votes: doc.get('votes')
         );
       }).toList();
     });
