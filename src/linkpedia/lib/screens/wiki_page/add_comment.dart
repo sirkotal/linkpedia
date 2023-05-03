@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:linkpedia/models/comment.dart';
 import 'package:linkpedia/models/user.dart';
 import 'package:linkpedia/services/comments_db.dart';
+import 'package:linkpedia/shared/top_bar.dart';
 import 'package:linkpedia/shared/loading.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
@@ -29,8 +30,8 @@ class _AddCommentState extends State<AddComment> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Add Comment'),
+      appBar: const TopBar(
+        title: Text('Add Comment'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),

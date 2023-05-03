@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:linkpedia/models/wiki_article.dart';
 import 'package:linkpedia/services/wikipedia_api.dart';
 import 'package:http/http.dart' as http;
+import 'package:linkpedia/shared/top_bar.dart';
 import 'package:linkpedia/shared/bottom_bar.dart';
 import 'package:linkpedia/shared/loading.dart';
 import 'package:linkpedia/shared/wiki_card.dart';
@@ -42,7 +43,7 @@ class _SearchResultsState extends State<SearchResults> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: TopBar(
         title: Container(
           height: 35,
           decoration: BoxDecoration(

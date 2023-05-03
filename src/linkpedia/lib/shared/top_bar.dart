@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 class TopBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
+  final Widget title;
   final IconButton? leading;
+  final List<Widget>? actions;
 
-  const TopBar({super.key, required this.title, this.leading});
+  const TopBar({super.key, required this.title, this.leading, this.actions});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title),
-      leading: this.leading,
+      title: title,
+      leading: leading,
       iconTheme: const IconThemeData(
         color: Colors.white,
         size: 36.0,
@@ -22,6 +23,7 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
           bottomLeft: Radius.circular(25),
         ),
       ),
+      actions: actions
     );
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:linkpedia/services/authentication.dart';
 import 'package:linkpedia/services/auth_exceptions.dart';
+import 'package:linkpedia/shared/top_bar.dart';
 
 class LoginPage extends StatefulWidget {
   final Function toggleView;
@@ -24,14 +25,14 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: TopBar(
         title: const Text('Login'),
         actions: <Widget>[
           ElevatedButton(
             onPressed: () => widget.toggleView(),
             child: const Text('Register')
           ),
-        ],
+        ]
       ),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
