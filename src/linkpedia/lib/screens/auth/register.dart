@@ -34,10 +34,10 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: _isLoading ? const Loading() : Container(
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: Colors.deepPurpleAccent
+          color: Colors.deepPurple
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,6 +120,9 @@ class _RegisterPageState extends State<RegisterPage> {
                               width: 300,
                               child: ElevatedButton(
                                 onPressed: () async {
+                                  setState(() {
+                                    _isLoading = true;
+                                  });
                                   if (_formKey.currentState!.validate()) {
                                     try {
                                       await _auth.register(email, password, username, name);
@@ -142,9 +145,12 @@ class _RegisterPageState extends State<RegisterPage> {
                                       });
                                     }
                                   }
+                                  setState(() {
+                                    _isLoading = false;
+                                  });
                                 },
                                 style: ButtonStyle(
-                                  backgroundColor: const MaterialStatePropertyAll<Color>(Colors.deepPurpleAccent),
+                                  backgroundColor: const MaterialStatePropertyAll<Color>(Colors.deepPurple),
                                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                     RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)))
                                 ),
