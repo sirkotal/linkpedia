@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:linkpedia/services/authentication.dart';
 import 'package:linkpedia/services/auth_exceptions.dart';
+import 'package:linkpedia/shared/top_bar.dart';
 import 'package:linkpedia/shared/loading.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -33,11 +34,11 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: TopBar(
         title: const Text('Register'),
         actions: <Widget>[
           ElevatedButton(onPressed: () => widget.toggleView(), child: const Text('Login')),
-        ],
+        ]
       ),
       body: _isLoading ? const Loading() : ListView(
         physics: const NeverScrollableScrollPhysics(),

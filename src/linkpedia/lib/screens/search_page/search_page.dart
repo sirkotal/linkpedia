@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linkpedia/screens/search_page/search_results.dart';
+import 'package:linkpedia/shared/top_bar.dart';
 import 'package:linkpedia/shared/bottom_bar.dart';
 
 class SearchPage extends StatefulWidget {
@@ -27,8 +28,8 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Linkpedia'),
+      appBar: const TopBar(
+        title: Text('Linkpedia')
       ),
       body: Center(
         child: Padding(

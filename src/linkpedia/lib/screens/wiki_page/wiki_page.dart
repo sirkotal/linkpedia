@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linkpedia/screens/wiki_page/floating_buttons.dart';
+import 'package:linkpedia/shared/top_bar.dart';
 import 'package:linkpedia/shared/bottom_bar.dart';
 import 'package:linkpedia/shared/loading.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -56,7 +57,7 @@ class _WikiPageState extends State<WikiPage> {
         return false;
       },
       child: _isLoading ? const Loading() : Scaffold(
-        appBar: AppBar(
+        appBar: TopBar(
           title: Text(pageTitle),
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),

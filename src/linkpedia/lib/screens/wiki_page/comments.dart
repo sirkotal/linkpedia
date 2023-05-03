@@ -5,6 +5,7 @@ import 'package:linkpedia/screens/wiki_page/add_comment.dart';
 import 'package:linkpedia/services/authentication.dart';
 import 'package:linkpedia/services/comments_db.dart';
 import 'package:linkpedia/screens/wiki_page/comments_list.dart';
+import 'package:linkpedia/shared/top_bar.dart';
 import 'package:linkpedia/shared/bottom_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -26,8 +27,8 @@ class _CommentsState extends State<Comments> {
       value: CommentsDatabaseService(articleUrl: widget.articleUrl).commentsByArticle,
       initialData: const [],
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Comments'),
+        appBar: const TopBar(
+          title: Text('Comments'),
         ),
         body: CommentsList(title: widget.articleTitle),
         floatingActionButton: FloatingActionButton(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:linkpedia/services/authentication.dart';
 import 'package:linkpedia/services/auth_exceptions.dart';
+import 'package:linkpedia/shared/top_bar.dart';
 
 class LoginPage extends StatefulWidget {
   final Function toggleView;
