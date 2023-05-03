@@ -1,4 +1,3 @@
-
 ## Architecture and Design
 The architecture of a software system encompasses the set of key decisions about its overall organization. 
 
@@ -12,9 +11,7 @@ In this section you should start by briefly describing the overall components of
 ![logicalview](https://user-images.githubusercontent.com/93836408/225163548-345a8303-6a3f-42a1-b36f-b8303cc20ec6.jpg)
 
 ### Physical architecture
-![DeploymentView](https://user-images.githubusercontent.com/93836408/225172160-b0aeb616-8629-41ff-a63c-61f9dded3057.jpg)
-
-
+![DeploymentView](https://user-images.githubusercontent.com/93833262/227270533-d131f0bb-32ad-46e9-9506-884cdc99c393.png)
 
 ### Vertical prototype
 To help on validating all the architectural, design and technological decisions made, we usually implement a vertical prototype, a thin vertical slice of the system.

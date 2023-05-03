@@ -1,14 +1,13 @@
-Scenario: Change the page's theme
-    When the user wants to change a page's theme
-    Then he should be able to change the theme in the settings
-    And the page should be reloaded with the new theme
+Feature: User Customization
 
-Scenario: Select the article's language
-    Given the user is viewing an article
+  Scenario: Change the page's theme
+    Given the user is on a Linkpedia page
+    When the user wants to change the page's theme
+    And changes it in the settings
+    Then the page should be reloaded with the new theme
+
+  Scenario: Select the article's language
+    Given the user is on an article page
     When he wants to view it in a different language
-    Then the user should be able to select a language from a menu
-
-Scenario: Format the comment's contents
-    Given the user is writing a comment 
-    And he wants to change the way the text looks
-    Then the user should be able to use the available text formatting options to change its looks
+    And selects a different language from a menu
+    Then the article should be displayed in a different language

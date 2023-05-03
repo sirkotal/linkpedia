@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linkpedia/screens/search_page/search_results.dart';
+import 'package:linkpedia/shared/bottom_bar.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -49,13 +50,12 @@ class _SearchPageState extends State<SearchPage> {
                 ),
                 onSubmitted: (String text) {
                   _textController.clear();
-                  
-                  // TODO: Change to pushReplacement when bottom bar is implemented
-                  Navigator.push(
+                  Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
                       builder: (context) => SearchResults(query: text)
-                    )
+                    ),
+                    (Route<dynamic> route) => false
                   );
                 }
               )
@@ -63,6 +63,7 @@ class _SearchPageState extends State<SearchPage> {
           ),
         )
       ),
+      bottomNavigationBar: BottomBar(searchSelected: true),
     );
   }
 }
