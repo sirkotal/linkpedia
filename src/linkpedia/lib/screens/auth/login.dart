@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linkpedia/services/authentication.dart';
 import 'package:linkpedia/services/auth_exceptions.dart';
-import 'package:linkpedia/shared/top_bar.dart';
 
 class LoginPage extends StatefulWidget {
   final Function toggleView;
@@ -64,6 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
+                                  key: const ValueKey('email'),
                                   decoration: InputDecoration(
                                     hintText: 'Email',
                                     errorText: emailError,
@@ -73,6 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 const SizedBox(height: 8),
                                 TextFormField(
+                                  key: const ValueKey('password'),
                                   obscureText: true,
                                   decoration: InputDecoration(
                                     hintText: 'Password',
@@ -102,6 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                                   margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
                                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
                                   child: ElevatedButton(
+                                    key: const ValueKey('login'),
                                     onPressed: () async {
                                       if (_formKey.currentState!.validate()) {
                                         try {

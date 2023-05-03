@@ -42,9 +42,10 @@ class CheckIfHomePageIsPresent extends Then1WithWorld<String, FlutterWorld> {
   @override
   Future<void> executeStep(String input1) async {
     final homefinder = find.text('Welcome to Linkpedia!');
+    await FlutterDriverUtils.waitForFlutter(world.driver);
+    await world.driver?.waitFor(homefinder);
     bool isPresent = await FlutterDriverUtils.isPresent(world.driver, homefinder);
     expect(isPresent, true);
-    await FlutterDriverUtils.waitForFlutter(world.driver);
   }
 
   @override
