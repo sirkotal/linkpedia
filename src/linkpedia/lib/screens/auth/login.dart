@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: Colors.deepPurpleAccent
+          color: Colors.deepPurple
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -123,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                                       }
                                     },
                                     style: ButtonStyle(
-                                      backgroundColor: const MaterialStatePropertyAll<Color>(Colors.deepPurpleAccent),
+                                      backgroundColor: const MaterialStatePropertyAll<Color>(Colors.deepPurple),
                                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                         RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)))
                                     ),
