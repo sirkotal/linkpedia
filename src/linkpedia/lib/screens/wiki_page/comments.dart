@@ -20,7 +20,7 @@ class Comments extends StatefulWidget {
 
 //? test: https://en.wikipedia.org/wiki/The_New_York_Times (search for "the")
 class _CommentsState extends State<Comments> {
-  double? _height = 0;
+  double _height = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,8 @@ class _CommentsState extends State<Comments> {
         appBar: AppBar(
           title: const Text('Comments'),   
         ),
-        body: CommentsList(title: widget.articleTitle, onHeightChanged: (height) {setState(() {
+        body: CommentsList(title: widget.articleTitle, onHeightChanged: (height) {
+          setState(() {
             _height = height;
           });
         }),
@@ -47,7 +48,7 @@ class _CommentsState extends State<Comments> {
           },
           child: const Icon(Icons.add)
         ),
-        bottomNavigationBar: _height! >= 0.3 ? AddComment(articleTitle: widget.articleTitle, articleUrl: widget.articleUrl) : BottomBar(),
+        bottomNavigationBar: _height >= 0.3 ? AddComment(articleTitle: widget.articleTitle, articleUrl: widget.articleUrl) : BottomBar(),
       ),
     );
   }

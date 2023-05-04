@@ -29,52 +29,46 @@ class _AddCommentState extends State<AddComment> {
     }
 
     return BottomAppBar(
-      
-     /* child: Padding(
-        padding: const EdgeInsets.all(15.0),*/
-        child: Form(
-          /*key: _formKey,*/
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Text('ok'),
-              TextFormField(
-                maxLines: 1,
-                maxLength: 500,
-                decoration: const InputDecoration(
-                  hintText: 'Comment',
-                  border: OutlineInputBorder(),
+      child: Container(
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Form(
+                key: _formKey,
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: 'Add a comment',
+                    contentPadding: EdgeInsets.all(10.0),
+                    border: InputBorder.none,
+                  ),
+                  validator: (val) => val!.isEmpty ? 'Please enter a comment' : null,
+                  onChanged: (val) {
+                    setState(() {
+                      commentBody = val;
+                    });
+                  },
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a comment';
-                  }
-                  return null;
-                },
-                onChanged: (value) => commentBody = value,
-              )
-              
-              /*ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    Comment comment = Comment(
+              ),
+            ),
+            IconButton(
+              icon: const Icon(Icons.send),
+              onPressed: () async {
+                if (_formKey.currentState!.validate()) {
+                  await CommentsDatabaseService.addComment(
+                    Comment(
                       commentId: const Uuid().v4(),
                       userId: user.uid,
                       articleUrl: widget.articleUrl,
                       commentBody: commentBody,
-                      timestamp: DateTime.now()
-                    );
-            
-                    CommentsDatabaseService.addComment(comment).then((value) {
-                      Navigator.pop(context);
-                    });
-                  }
-                },
-                child: const Text('Submit'),
-              )*/
-            ],
-          )
+                      timestamp: DateTime.now(),
+                    )
+                  );
+                }
+              }
+            )
+          ],
         ),
-      );
+      )
+    );
   }
 }
