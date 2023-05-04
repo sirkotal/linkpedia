@@ -59,7 +59,7 @@ At the end, it is good to add a rough indication of the value of the user story 
 
 
 
-## Domain model
+## Domain Model
 
  <p align="center" justify="center">
   <img src="https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/blob/main/images/DomainModel.png"/>
