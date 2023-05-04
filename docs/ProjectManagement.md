@@ -104,26 +104,27 @@ Overall, we think this was our best iteration so far and we look forward to cont
 ![End](../images/sprint_three_end.png)
 
 While we weren't able to deliver what he had hoped for in this iteration, we were still satisfied with the state of our product by the end of Sprint 3. 
+
 Although we didn't deliver any major features, we managed to close some important issues (finishing the authentication pages and the app bar) and set up the comments reactions backend.
 
 ### WHAT WENT WELL
 
-➤ We wrapped up the authentication tasks we had left (Register and Login screens, app bar).
-➤ We added automated GitHub testing to the project.
-➤ We worked well as a team and were able to complete our tasks, while simultaneously helping each other, through constant communication.
+- We wrapped up the authentication tasks we had left (Register and Login screens, app bar).
+- We added automated GitHub testing to the project.
+- We worked well as a team and were able to complete our tasks, while simultaneously helping each other, through constant communication.
 
 ### WHAT WENT WRONG
 
-➤ We had some issues with the comment section's frontend.
-➤ We weren't able to add any new features for the user.
+- We had some issues with the comment section's frontend.
+- We weren't able to add any new features for the user.
 
 ### WHAT TO DO NEXT
 
-➤ Review and improve the existing user stories and acceptance tests.
-➤ Design more tests and improve upon the existing ones.
-➤ Make our changelog more verbose.
-➤ Take a final look at all the previous features we developed and check if there's room for improvement.
-➤ Continue developing our app so that we have a complete, quality product by the project's deadline.
+- Review and improve the existing user stories and acceptance tests.
+- Design more tests and improve upon the existing ones.
+- Make our changelog more verbose.
+- Take a final look at all the previous features we developed and check if there's room for improvement.
+- Continue developing our app so that we have a complete, quality product by the project's deadline.
 
 Overall, we think this iteration's balance was relatively positive, taking into account the time constraints we experienced; nevertheless, we look forward to continuing to work on our product.
 
@@ -131,4 +132,4 @@ Overall, we think this iteration's balance was relatively positive, taking into 
 
 ## Retrospective
 
-![Start]()
+![Start](https://user-images.githubusercontent.com/93833262/236257960-f0d390a0-15cb-4982-a812-cb5ea551c228.png)
