@@ -28,27 +28,18 @@ class _AddCommentState extends State<AddComment> {
       return const Loading();
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Add Comment'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
+    return BottomAppBar(
+      
+     /* child: Padding(
+        padding: const EdgeInsets.all(15.0),*/
         child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          /*key: _formKey,*/
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Text(
-                'Comment on "${widget.articleTitle}"',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20.0
-                ),
-              ),
-              const SizedBox(height: 20.0),
+              Text('ok'),
               TextFormField(
-                maxLines: 10,
+                maxLines: 1,
                 maxLength: 500,
                 decoration: const InputDecoration(
                   hintText: 'Comment',
@@ -61,9 +52,9 @@ class _AddCommentState extends State<AddComment> {
                   return null;
                 },
                 onChanged: (value) => commentBody = value,
-              ),
-              const SizedBox(height: 20.0),
-              ElevatedButton(
+              )
+              
+              /*ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     Comment comment = Comment(
@@ -80,11 +71,10 @@ class _AddCommentState extends State<AddComment> {
                   }
                 },
                 child: const Text('Submit'),
-              )
+              )*/
             ],
           )
         ),
-      )
-    );
+      );
   }
 }

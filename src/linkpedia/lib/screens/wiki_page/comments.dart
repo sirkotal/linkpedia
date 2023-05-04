@@ -20,6 +20,8 @@ class Comments extends StatefulWidget {
 
 //? test: https://en.wikipedia.org/wiki/The_New_York_Times (search for "the")
 class _CommentsState extends State<Comments> {
+  double? _height = 0;
+
   @override
   Widget build(BuildContext context) {
     return StreamProvider<List<Comment>>.value(
@@ -27,9 +29,12 @@ class _CommentsState extends State<Comments> {
       initialData: const [],
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Comments'),
+          title: const Text('Comments'),   
         ),
-        body: CommentsList(title: widget.articleTitle),
+        body: CommentsList(title: widget.articleTitle, onHeightChanged: (height) {setState(() {
+            _height = height;
+          });
+        }),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -42,7 +47,7 @@ class _CommentsState extends State<Comments> {
           },
           child: const Icon(Icons.add)
         ),
-        bottomNavigationBar: BottomBar(),
+        bottomNavigationBar: _height! >= 0.3 ? AddComment(articleTitle: widget.articleTitle, articleUrl: widget.articleUrl) : BottomBar(),
       ),
     );
   }
