@@ -10,21 +10,20 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: title,
-      leading: leading,
-      iconTheme: const IconThemeData(
-        color: Colors.white,
-        size: 36.0,
-      ),
-      elevation: 0.0,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          bottomRight: Radius.circular(25),
-          bottomLeft: Radius.circular(25),
+        title: title,
+        leading: leading,
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+          size: 36.0,
         ),
-      ),
-      actions: actions
-    );
+        elevation: 0.0,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(25),
+            bottomLeft: Radius.circular(25),
+          ),
+        ),
+        actions: actions);
   }
 
   @override
