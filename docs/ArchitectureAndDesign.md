@@ -10,14 +10,10 @@ In this section you should start by briefly describing the overall components of
 ### Logical architecture
 ![logicalview](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/assets/93833262/3ff2f272-94be-4ee3-87e8-a41bda334487)
 
-
-### Physical architecture
+### Physical Architecture
 ![DeploymentView](https://user-images.githubusercontent.com/93833262/227270533-d131f0bb-32ad-46e9-9506-884cdc99c393.png)
 
-### Vertical prototype
-To help on validating all the architectural, design and technological decisions made, we usually implement a vertical prototype, a thin vertical slice of the system.
-
-In this subsection please describe which feature you have implemented, and how, together with a snapshot of the user interface, if applicable.
-
-At this phase, instead of a complete user story, you can simply implement a feature that demonstrates thay you can use the technology, for example, show a screen with the app credits (name and authors).
-
+### Vertical Prototype
+<p align="center" justify="center">
+  <img src="../images/vert_slice.png"/>
+</p>
