@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:linkpedia/screens/wiki_page/add_comment.dart';
+import 'package:linkpedia/screens/wiki_page/comments.dart';
 import 'package:linkpedia/screens/wiki_page/floating_buttons.dart';
 import 'package:linkpedia/shared/bottom_bar.dart';
 import 'package:linkpedia/shared/loading.dart';
@@ -18,6 +20,8 @@ class _WikiPageState extends State<WikiPage> {
   String pageTitle = '';
   String currentUrl = '';
   bool _isLoading = true;
+  bool _showComments = false;
+  double height = 0;
 
   @override
   void initState() {
@@ -65,12 +69,27 @@ class _WikiPageState extends State<WikiPage> {
             },
           )
         ),
-        body: WebViewWidget(controller: _webViewController),
-        floatingActionButton: FloatingButtons(
-          title: pageTitle,
-          url: currentUrl
-        ),
-        bottomNavigationBar: BottomBar(searchSelected: true),
+        body: Stack(
+              children: [
+                WebViewWidget(controller: _webViewController),
+                Visibility(
+                  visible: _showComments,
+                  child: Comments(articleTitle: pageTitle, articleUrl: currentUrl, onHeight: (_height) {
+                    setState(() {
+                      height = _height;
+                    });
+                  })),
+                Positioned(
+                  bottom: 10,
+                  right: 10,
+                  child: FloatingButtons(title: pageTitle, url: currentUrl, onTouch: (showComments) {
+                    setState(() {
+                      _showComments = showComments;
+                    });
+                  })),
+                ],
+            ),
+        bottomNavigationBar: height >= 0.2 ? AddComment(articleTitle: pageTitle, articleUrl: currentUrl) : BottomBar(searchSelected: true),
       ),
     );
   }

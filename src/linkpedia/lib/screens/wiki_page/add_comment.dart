@@ -121,6 +121,7 @@ class _AddCommentState extends State<AddComment> {
                     timestamp: DateTime.now(),
                   ),
                 );
+                _commentController.clear();
               }
             },
           )

@@ -11,8 +11,9 @@ import 'package:provider/provider.dart';
 class Comments extends StatefulWidget {
   final String articleTitle;
   final String articleUrl;
+  final Function(double _height) onHeight;
 
-  const Comments({super.key, required this.articleTitle, required this.articleUrl});
+  const Comments({super.key, required this.articleTitle, required this.articleUrl, required this.onHeight});
 
   @override
   State<Comments> createState() => _CommentsState();
@@ -27,23 +28,11 @@ class _CommentsState extends State<Comments> {
     return StreamProvider<List<Comment>>.value(
       value: CommentsDatabaseService(articleUrl: widget.articleUrl).commentsByArticle,
       initialData: const [],
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Comments'),   
-        ),
-        body: /*SingleChildScrollView(
-          child: Column(
-            children: [
-              AddComment(articleTitle: widget.articleTitle, articleUrl: widget.articleUrl),*/
-              CommentsList(title: widget.articleTitle, onHeightChanged: (height) {
+      child: CommentsList(title: widget.articleTitle, onHeightChanged: (height) {
                 setState(() {
-                  _height = height;
+                  widget.onHeight(height);
                 });
-              }),
-          /*]),
-        ),*/
-        bottomNavigationBar: _height >= 0.3 ? AddComment(articleTitle: widget.articleTitle, articleUrl: widget.articleUrl) : BottomBar(),
-      ),
+        })
     );
   }
 }

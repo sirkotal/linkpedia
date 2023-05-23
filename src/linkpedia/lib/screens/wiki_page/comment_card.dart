@@ -30,7 +30,7 @@ class _CommentCardState extends State<CommentCard> {
         if (snapshot.hasData) {
           UserData authorData = snapshot.data as UserData;
           return Card(
-            color: Colors.grey[300],
+            color: Colors.white,
             margin: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 0.0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12.0),

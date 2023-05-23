@@ -28,25 +28,20 @@ class _CommentsListState extends State<CommentsList> {
   @override
   Widget build(BuildContext context) {
     return Consumer<List<Comment>>(builder: (context, comments, child) {
-      if (comments.isEmpty) {
-        return const Center(
-          child: Text(
-            'No comments yet',
-            style: TextStyle(fontSize: 18.0),
-          )
-        );
+      List<Comment> sortedComments = [];
+      if (!comments.isEmpty) {
+        // sort comments by date (newest first)
+        sortedComments = comments;
+        sortedComments.sort((a, b) => b.timestamp.compareTo(a.timestamp));
       }
-      // sort comments by date (newest first)
-      List<Comment> sortedComments = comments;
-      sortedComments.sort((a, b) => b.timestamp.compareTo(a.timestamp));
       return DraggableScrollableSheet(
         controller: _scrollController,
-        initialChildSize: 0.5,
-        minChildSize: 0.2,
+        initialChildSize: 0.15,
+        minChildSize: 0.15,
         maxChildSize: 0.75,
         builder: (context, controller) => Container(
           decoration: BoxDecoration(
-            color: Colors.grey.withOpacity(0.5),
+            color: Colors.deepPurple,
             borderRadius:
                 const BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
           ),
@@ -56,12 +51,20 @@ class _CommentsListState extends State<CommentsList> {
               padding: const EdgeInsets.all(10.0),
               child: Column(
                 children: <Widget>[
-                  Text(
-                    "Comments on \"${widget.title}\":",
-                    style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-                  ),
-                  ...sortedComments.map((comment) => CommentCard(comment: comment)).toList()
-                ],
+                Text(
+                  "Comments",
+                  style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+                ),
+                if (comments.isEmpty)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16.0), // Add desired top padding
+                      child: Text(
+                        "No comments yet!",
+                        style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                ...sortedComments.map((comment) => CommentCard(comment: comment)).toList(),
+              ],
               ),
             ),
           )
