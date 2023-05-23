@@ -22,42 +22,19 @@ class _FloatingButtonsState extends State<FloatingButtons> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: <Widget>[
-        AnimatedOpacity(
-          duration: const Duration(milliseconds: 500),
-          opacity: _showButtons ? 1.0 : 0.0,
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 5.0),
-            child: Visibility(
-              visible: _showButtons,
-              child: FloatingActionButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => Comments(articleTitle: widget.title, articleUrl: widget.url)
-                  ));
-                  setState(() {
-                    _showButtons = false;
-                  });
-                },
-                child: const Icon(Icons.comment),
-              ),
-            ),
-          ),
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 5.0),
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) => Comments(articleTitle: widget.title, articleUrl: widget.url)
+            ));
+            setState(() {
+              _showButtons = false;
+            });
+          },
+          child: const Icon(Icons.comment),
         ),
-        Container(
-          margin: const EdgeInsets.symmetric(vertical: 5.0),
-          child: FloatingActionButton(
-            onPressed: () {
-              setState(() {
-                _showButtons = !_showButtons;
-              });
-            },
-            child: Icon(_showButtons ? Icons.close : Icons.more_horiz),
-          ),
-        ),
-      ]
-    );
+      );
   }
 }

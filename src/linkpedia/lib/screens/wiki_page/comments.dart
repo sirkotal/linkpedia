@@ -31,23 +31,17 @@ class _CommentsState extends State<Comments> {
         appBar: AppBar(
           title: const Text('Comments'),   
         ),
-        body: CommentsList(title: widget.articleTitle, onHeightChanged: (height) {
-          setState(() {
-            _height = height;
-          });
-        }),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return StreamProvider<User?>.value(
-                value: AuthService().user,
-                initialData: null,
-                child: AddComment(articleTitle: widget.articleTitle, articleUrl: widget.articleUrl),
-              );
-            }));
-          },
-          child: const Icon(Icons.add)
-        ),
+        body: /*SingleChildScrollView(
+          child: Column(
+            children: [
+              AddComment(articleTitle: widget.articleTitle, articleUrl: widget.articleUrl),*/
+              CommentsList(title: widget.articleTitle, onHeightChanged: (height) {
+                setState(() {
+                  _height = height;
+                });
+              }),
+          /*]),
+        ),*/
         bottomNavigationBar: _height >= 0.3 ? AddComment(articleTitle: widget.articleTitle, articleUrl: widget.articleUrl) : BottomBar(),
       ),
     );
