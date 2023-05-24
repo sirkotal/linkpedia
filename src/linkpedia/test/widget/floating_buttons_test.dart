@@ -6,11 +6,9 @@ void main() {
   group('FloatingButtons', () {
     testWidgets('Open and close buttons', (WidgetTester tester) async {
       // title and url not needed because they are not used in the widget
-      await tester.pumpWidget(
-        MaterialApp(
-          home: FloatingButtons(title: 'TestTitle', url: 'TestUrl', onTouch: () {})
-        )
-      );
+      await tester.pumpWidget(MaterialApp(
+          home: FloatingButtons(
+              title: 'TestTitle', url: 'TestUrl', onTouch: () {})));
 
       // button must be closed
       expect(find.byIcon(Icons.more_horiz), findsOneWidget);

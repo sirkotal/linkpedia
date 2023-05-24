@@ -7,8 +7,8 @@ To document the architecture requires describing the decomposition of the system
 
 In this section you should start by briefly describing the overall components of the project and their interrelations. You should also describe how you solved typical problems you may have encountered, pointing to well-known architectural and design patterns, if applicable.
 
-### Logical Architecture
-![logicalview](https://user-images.githubusercontent.com/93836408/225163548-345a8303-6a3f-42a1-b36f-b8303cc20ec6.jpg)
+### Logical architecture
+![logicalview](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/assets/93833262/3ff2f272-94be-4ee3-87e8-a41bda334487)
 
 ### Physical Architecture
 ![DeploymentView](https://user-images.githubusercontent.com/93833262/227270533-d131f0bb-32ad-46e9-9506-884cdc99c393.png)
