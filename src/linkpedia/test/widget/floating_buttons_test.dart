@@ -4,16 +4,14 @@ import 'package:linkpedia/screens/wiki_page/floating_buttons.dart';
 
 void main() {
   group('FloatingButtons', () {
-    late Widget widget;
-
-    setUp(() {
-      // title and url not needed because they are not used in the widget
-      widget = const MaterialApp(
-          home: FloatingButtons(title: 'TestTitle', url: 'TestUrl'));
-    });
-
     testWidgets('Open and close buttons', (WidgetTester tester) async {
       await tester.pumpWidget(widget);
+      // title and url not needed because they are not used in the widget
+      await tester.pumpWidget(
+        MaterialApp(
+          home: FloatingButtons(title: 'TestTitle', url: 'TestUrl', onTouch: () {})
+        )
+      );
 
       // button must be closed
       expect(find.byIcon(Icons.more_horiz), findsOneWidget);

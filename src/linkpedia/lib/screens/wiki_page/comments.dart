@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:linkpedia/models/comment.dart';
-import 'package:linkpedia/models/user.dart';
-import 'package:linkpedia/screens/wiki_page/add_comment.dart';
-import 'package:linkpedia/services/authentication.dart';
 import 'package:linkpedia/services/comments_db.dart';
 import 'package:linkpedia/screens/wiki_page/comments_list.dart';
-import 'package:linkpedia/shared/top_bar.dart';
-import 'package:linkpedia/shared/bottom_bar.dart';
 import 'package:provider/provider.dart';
 
 class Comments extends StatefulWidget {
   final String articleTitle;
   final String articleUrl;
+  final Function(double height) onHeight;
 
-  const Comments({super.key, required this.articleTitle, required this.articleUrl});
+  const Comments({super.key, required this.articleTitle, required this.articleUrl, required this.onHeight});
 
   @override
   State<Comments> createState() => _CommentsState();
@@ -26,25 +22,11 @@ class _CommentsState extends State<Comments> {
     return StreamProvider<List<Comment>>.value(
       value: CommentsDatabaseService(articleUrl: widget.articleUrl).commentsByArticle,
       initialData: const [],
-      child: Scaffold(
-        appBar: const TopBar(
-          title: Text('Comments'),
-        ),
-        body: CommentsList(title: widget.articleTitle),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return StreamProvider<User?>.value(
-                value: AuthService().user,
-                initialData: null,
-                child: AddComment(articleTitle: widget.articleTitle, articleUrl: widget.articleUrl),
-              );
-            }));
-          },
-          child: const Icon(Icons.add)
-        ),
-        bottomNavigationBar: BottomBar(),
-      ),
+      child: CommentsList(title: widget.articleTitle, onHeightChanged: (height) {
+          setState(() {
+            widget.onHeight(height);
+          });
+        })
     );
   }
 }

@@ -38,4 +38,88 @@ class CommentsDatabaseService {
       }).toList();
     });
   }
+
+  
+  static Future<int> checkValue(String userId, String commentId) async {
+    try {
+      QuerySnapshot likesSnapshot = await FirebaseFirestore.instance
+        .collection('comments')
+        .doc(commentId)
+        .collection('votes')
+        .where('userId', isEqualTo: userId)
+        .limit(1)
+        .get();
+      return likesSnapshot.docs.isNotEmpty ? likesSnapshot.docs.first['voteValue'] : 0;
+    } catch (error) {
+      return -2;
+    }
+  }
+
+
+  static Future<void> updateUserLikeStatus(String userId, String commentId, bool liked, bool disliked) async {
+    // Check if the user has already liked the comment
+    int hasLiked = await checkValue(userId, commentId);
+
+    if (hasLiked == 1 && disliked){
+        await FirebaseFirestore.instance
+          .collection('comments')
+          .doc(commentId)
+          .collection('votes')
+          .where('userId', isEqualTo: userId)
+          .limit(1)
+          .get()
+          .then((snapshot) {
+        if (snapshot.docs.isNotEmpty) {
+          // Delete the like document for the user
+          snapshot.docs.first.reference.update({
+            'voteValue': -1,
+          });
+        }
+        });
+    }  
+    else if (hasLiked == -1 && liked){
+        await FirebaseFirestore.instance
+          .collection('comments')
+          .doc(commentId)
+          .collection('votes')
+          .where('userId', isEqualTo: userId)
+          .limit(1)
+          .get()
+          .then((snapshot) {
+        if (snapshot.docs.isNotEmpty) {
+          // Delete the like document for the user
+          snapshot.docs.first.reference.update({
+            'voteValue': 1,
+          });
+        }
+        });
+    }
+    else if ((hasLiked==1  && !liked) || (hasLiked==-1 && !disliked)) {
+      // User has liked the comment, but wants to unlike it
+      await FirebaseFirestore.instance
+          .collection('comments')
+          .doc(commentId)
+          .collection('votes')
+          .where('userId', isEqualTo: userId)
+          .limit(1)
+          .get()
+          .then((snapshot) {
+        if (snapshot.docs.isNotEmpty) {
+          // Delete the like document for the user
+          snapshot.docs.first.reference.delete();
+        }
+        });
+    } 
+    else if (hasLiked == 0 && (liked || disliked)) {
+      // User has not liked the comment, but wants to like it
+      await FirebaseFirestore.instance
+        .collection('comments')
+        .doc(commentId)
+        .collection('votes')
+        .add({
+          'userId': userId,
+          'voteValue': liked ? 1 : (disliked ? -1 : 0),
+        });
+    }
+  }
 }
