@@ -7,8 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class EditProfilePage extends StatefulWidget {
   final UserData userData;
 
-  // ignore: prefer_const_constructors_in_immutables
-  EditProfilePage({super.key, required this.userData});
+  const EditProfilePage({super.key, required this.userData});
 
   @override
   State<EditProfilePage> createState() => _EditProfilePageState();
@@ -70,13 +69,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 'Current Username: ${widget.userData.username}',
                 style: TextStyle(fontSize: 24.0),
               ),
-              Text(
-                'Current Name: ${widget.userData.name}',
-                style: TextStyle(fontSize: 24.0),
-              ),
               TextFormField(
                 controller: _usernameController,
                 decoration: InputDecoration(labelText: 'Username'),
+              ),
+              Text(
+                'Current Name: ${widget.userData.name}',
+                style: TextStyle(fontSize: 24.0),
               ),
               TextFormField(
                 controller: _nameController,
@@ -85,6 +84,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
               SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: _updateProfile,
+                style: ButtonStyle(
+                    backgroundColor: const MaterialStatePropertyAll<Color>(
+                        Colors.deepPurple),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(17)))),
                 child: const Text('Save Changes'),
               ),
             ],
