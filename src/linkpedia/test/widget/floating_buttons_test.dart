@@ -7,8 +7,8 @@ void main() {
     testWidgets('Open and close buttons', (WidgetTester tester) async {
       // title and url not needed because they are not used in the widget
       await tester.pumpWidget(
-        const MaterialApp(
-          home: FloatingButtons(title: 'TestTitle', url: 'TestUrl')
+        MaterialApp(
+          home: FloatingButtons(title: 'TestTitle', url: 'TestUrl', onTouch: () {})
         )
       );
 

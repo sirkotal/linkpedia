@@ -15,62 +15,6 @@ class AddComment extends StatefulWidget {
   @override
   State<AddComment> createState() => _AddCommentState();
 }
-/*
-class _AddCommentState extends State<AddComment> {
-  final _formKey = GlobalKey<FormState>();
-
-  @override
-  Widget build(BuildContext context) {
-    final User? user = Provider.of<User?>(context);
-    String commentBody = '';
-
-    if (user == null) {
-      return const Loading();
-    }
-
-    return Container(
-        child: Row(
-          children: <Widget>[
-            Expanded(
-              child: Form(
-                key: _formKey,
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: 'Add a comment',
-                    contentPadding: EdgeInsets.all(10.0),
-                    border: InputBorder.none,
-                  ),
-                  validator: (val) => val!.isEmpty ? 'Please enter a comment' : null,
-                  onChanged: (val) {
-                    setState(() {
-                      commentBody = val;
-                    });
-                  },
-                ),
-              ),
-            ),
-            IconButton(
-              icon: const Icon(Icons.send),
-              onPressed: () async {
-                if (_formKey.currentState!.validate()) {
-                  await CommentsDatabaseService.addComment(
-                    Comment(
-                      commentId: const Uuid().v4(),
-                      userId: user.uid,
-                      articleUrl: widget.articleUrl,
-                      commentBody: commentBody,
-                      timestamp: DateTime.now(),
-                    )
-                  );
-                }
-              }
-            )
-          ],
-        ),
-      );
-  }
-}
-*/
 
 class _AddCommentState extends State<AddComment> {
   final _formKey = GlobalKey<FormState>();
