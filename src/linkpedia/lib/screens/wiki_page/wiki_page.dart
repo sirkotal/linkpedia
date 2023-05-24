@@ -31,7 +31,10 @@ class _WikiPageState extends State<WikiPage> {
       ..setJavaScriptMode(JavaScriptMode.disabled)
       ..loadRequest(Uri.parse(widget.url))
       ..setNavigationDelegate(NavigationDelegate(
-        onPageStarted: (String url) => setState(() => _isLoading = true),
+        onPageStarted: (String url) => setState(() { 
+          _isLoading = true;
+          _showComments = false;
+        }),
         onPageFinished: (String url) async {
           setState(() => _isLoading = false); // test in FEUP if slower internet don't cause problems
 

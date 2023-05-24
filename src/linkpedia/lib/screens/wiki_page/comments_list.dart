@@ -53,14 +53,14 @@ class _CommentsListState extends State<CommentsList> {
                 children: <Widget>[
                 Text(
                   "Comments",
-                  style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold,  color: Colors.white),
                 ),
                 if (comments.isEmpty)
                     Padding(
                       padding: const EdgeInsets.only(top: 16.0), // Add desired top padding
                       child: Text(
                         "No comments yet!",
-                        style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
                       ),
                     ),
                 ...sortedComments.map((comment) => CommentCard(comment: comment)).toList(),
