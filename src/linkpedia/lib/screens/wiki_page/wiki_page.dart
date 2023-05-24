@@ -66,28 +66,10 @@ class _WikiPageState extends State<WikiPage> {
     return await FollowDatabaseService.checkFollow(pageTitle, userId);
   }
 
-  Future<void> toggleFollowStatus(String pageTitle, String userId) async {
-    if (_follow) {
-      await FollowDatabaseService.removePage(pageTitle, userId);
-    } else {
-      await FollowDatabaseService.addPage(pageTitle, userId);
-    }
-  }
 
-
-  void status(User? user) async {
-    if (user != null) {  
-      _follow = await FollowDatabaseService.checkFollow(pageTitle, user!.uid);
-      print(_follow);
-      return;
-    }
-    _follow = false;
-
-  }
 
   @override
   Widget build(BuildContext context) {
-    print('start');
     user = Provider.of<User?>(context);
     final userId = user?.uid ?? '';
     print(user!.uid);
@@ -115,15 +97,15 @@ class _WikiPageState extends State<WikiPage> {
                 FutureBuilder<bool>(
                     future: checkFollowStatus(pageTitle, userId),
                     builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const CircularProgressIndicator();
-                      }
-
                       if (snapshot.hasData) {
                         _follow = snapshot.data!;
                         return IconButton(
                           onPressed: () async {
-                            await  toggleFollowStatus(pageTitle, userId);
+                            if (_follow) {
+                              await FollowDatabaseService.removePage(pageTitle, userId);
+                            } else {
+                              await FollowDatabaseService.addPage(pageTitle, userId);
+                            }
                             setState(() {
                               _follow = !_follow;
                             });
