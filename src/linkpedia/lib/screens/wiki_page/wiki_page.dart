@@ -6,6 +6,13 @@ import 'package:linkpedia/shared/top_bar.dart';
 import 'package:linkpedia/shared/bottom_bar.dart';
 import 'package:linkpedia/shared/loading.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:linkpedia/models/user.dart';
+import 'package:linkpedia/services/follow.dart';
+import 'package:provider/provider.dart';
+
+
+
+
 
 class WikiPage extends StatefulWidget {
   final String url;
@@ -22,7 +29,9 @@ class _WikiPageState extends State<WikiPage> {
   String currentUrl = '';
   bool _isLoading = true;
   bool _showComments = false;
+  bool _follow = false;
   double _height = 0;
+  User? user;
 
   @override
   void initState() {
@@ -46,7 +55,6 @@ class _WikiPageState extends State<WikiPage> {
           if (currentUrl.contains('.m.')) {
             currentUrl = currentUrl.replaceAll('.m.', '.');
           }
-
           setState(() {
             pageTitle = title!.substring(0, title.length - ' - Wikipedia'.length);
           });
@@ -54,8 +62,36 @@ class _WikiPageState extends State<WikiPage> {
       ));
   }
 
+  Future<bool> checkFollowStatus(String pageTitle, String userId) async {
+    return await FollowDatabaseService.checkFollow(pageTitle, userId);
+  }
+
+  Future<void> toggleFollowStatus(String pageTitle, String userId) async {
+    if (_follow) {
+      await FollowDatabaseService.removePage(pageTitle, userId);
+    } else {
+      await FollowDatabaseService.addPage(pageTitle, userId);
+    }
+  }
+
+
+  void status(User? user) async {
+    if (user != null) {  
+      _follow = await FollowDatabaseService.checkFollow(pageTitle, user!.uid);
+      print(_follow);
+      return;
+    }
+    _follow = false;
+
+  }
+
   @override
   Widget build(BuildContext context) {
+    print('start');
+    user = Provider.of<User?>(context);
+    final userId = user?.uid ?? '';
+    print(user!.uid);
+    //status(user);
     return WillPopScope(
       onWillPop: () async {
         if (await _webViewController.canGoBack()) {
@@ -74,8 +110,32 @@ class _WikiPageState extends State<WikiPage> {
           )
         ),
         body: Stack(
-              children: [
+              children: [ 
                 WebViewWidget(controller: _webViewController),
+                FutureBuilder<bool>(
+                    future: checkFollowStatus(pageTitle, userId),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const CircularProgressIndicator();
+                      }
+
+                      if (snapshot.hasData) {
+                        _follow = snapshot.data!;
+                        return IconButton(
+                          onPressed: () async {
+                            await  toggleFollowStatus(pageTitle, userId);
+                            setState(() {
+                              _follow = !_follow;
+                            });
+                          },
+                          icon: const Icon(Icons.turned_in),
+                          color: _follow ? Colors.deepPurple : Colors.black,
+                        );
+                      }
+
+                      return const SizedBox();
+                    },
+                  ),
                 Visibility(
                   visible: _showComments,
                   child: Comments(articleTitle: pageTitle, articleUrl: currentUrl, onHeight: (height) {
