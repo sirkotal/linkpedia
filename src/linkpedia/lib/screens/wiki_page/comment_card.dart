@@ -4,11 +4,6 @@ import 'package:linkpedia/models/user.dart';
 import 'package:linkpedia/services/user_db.dart';
 import 'package:linkpedia/shared/loading.dart';
 import 'package:linkpedia/services/comments_db.dart';
-import 'package:linkpedia/models/comment.dart';
-import 'package:uuid/uuid.dart';
-
-
-
 
 class CommentCard extends StatefulWidget {
   final Comment comment;
@@ -21,25 +16,26 @@ class CommentCard extends StatefulWidget {
 
 class _CommentCardState extends State<CommentCard> {
   late Future<UserData> futureAuthorData;
-  int value_vote = 0;
+  int voteValue = 0;
   bool isLiked = false;
   bool isDisliked = false;  
   @override
   void initState() {
     super.initState();
     futureAuthorData = UserDatabaseService().getUserData(widget.comment.userId);
-    Status();
+    status();
   }
 
-  void Status() async {
-    value_vote = await CommentsDatabaseService.CheckValue(
+  void status() async {
+    voteValue = await CommentsDatabaseService.checkValue(
       widget.comment.userId,
       widget.comment.commentId,
     );
-    if (value_vote == 1)
+    if (voteValue == 1) {
       isLiked = true;
-    else if (value_vote == -1)
+    } else if (voteValue == -1) {
       isDisliked = true;
+    }
   }
 
   @override
@@ -50,7 +46,7 @@ class _CommentCardState extends State<CommentCard> {
         if (snapshot.hasData) {
           UserData authorData = snapshot.data as UserData;
           return Card(
-            color: Colors.grey[300],
+            color: Colors.white,
             margin: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 0.0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12.0),
@@ -93,7 +89,7 @@ class _CommentCardState extends State<CommentCard> {
                   ),
                   Row(
                     children: [
-                      Spacer(),
+                      const Spacer(),
                       IconButton(
                         onPressed: () {
                           setState(() {
@@ -118,7 +114,7 @@ class _CommentCardState extends State<CommentCard> {
                           });
 
                         }, 
-                        icon: Icon(Icons.thumb_up),
+                        icon: const Icon(Icons.thumb_up),
                         color: isLiked ? Colors.deepPurple : Colors.black,
                       ),
                       Text(
@@ -150,7 +146,7 @@ class _CommentCardState extends State<CommentCard> {
                             isLiked = false;
                           });
                         }, 
-                        icon: Icon(Icons.thumb_down),
+                        icon: const Icon(Icons.thumb_down),
                         color: isDisliked ? Colors.deepPurple : Colors.black,
                       ),
                     ],

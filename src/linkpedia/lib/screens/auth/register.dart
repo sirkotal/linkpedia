@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linkpedia/services/authentication.dart';
 import 'package:linkpedia/services/auth_exceptions.dart';
-import 'package:linkpedia/shared/top_bar.dart';
 import 'package:linkpedia/shared/loading.dart';
 
 class RegisterPage extends StatefulWidget {
