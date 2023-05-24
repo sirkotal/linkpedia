@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkpedia/shared/top_bar.dart';
 import 'package:linkpedia/shared/bottom_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,8 +13,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Linkpedia'),
+      appBar: const TopBar(
+        title: Text('Linkpedia')
       ),
       body: const Center(
         child: Text(

@@ -34,43 +34,41 @@ class _AddCommentState extends State<AddComment> {
       return const Loading();
     }
 
-    return Container(
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Form(
-              key: _formKey,
-              child: TextFormField(
-                controller: _commentController, // Set the controller
-                decoration: const InputDecoration(
-                  hintText: 'Add a comment',
-                  contentPadding: EdgeInsets.all(10.0),
-                  border: InputBorder.none,
-                ),
-                validator: (val) => val!.isEmpty ? 'Please enter a comment' : null,
+    return Row(
+      children: <Widget>[
+        Expanded(
+          child: Form(
+            key: _formKey,
+            child: TextFormField(
+              controller: _commentController, // Set the controller
+              decoration: const InputDecoration(
+                hintText: 'Add a comment',
+                contentPadding: EdgeInsets.all(10.0),
+                border: InputBorder.none,
               ),
+              validator: (val) => val!.isEmpty ? 'Please enter a comment' : null,
             ),
           ),
-          IconButton(
-            icon: const Icon(Icons.send),
-            onPressed: () async {
-              if (_formKey.currentState!.validate()) {
-                final commentBody = _commentController.text; // Get the comment from the controller
-                await CommentsDatabaseService.addComment(
-                  Comment(
-                    commentId: const Uuid().v4(),
-                    userId: user.uid,
-                    articleUrl: widget.articleUrl,
-                    commentBody: commentBody,
-                    timestamp: DateTime.now(),
-                  ),
-                );
-                _commentController.clear();
-              }
-            },
-          )
-        ],
-      ),
+        ),
+        IconButton(
+          icon: const Icon(Icons.send),
+          onPressed: () async {
+            if (_formKey.currentState!.validate()) {
+              final commentBody = _commentController.text; // Get the comment from the controller
+              await CommentsDatabaseService.addComment(
+                Comment(
+                  commentId: const Uuid().v4(),
+                  userId: user.uid,
+                  articleUrl: widget.articleUrl,
+                  commentBody: commentBody,
+                  timestamp: DateTime.now(),
+                ),
+              );
+              _commentController.clear();
+            }
+          },
+        )
+      ],
     );
   }
 }
