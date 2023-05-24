@@ -22,7 +22,7 @@ class _WikiPageState extends State<WikiPage> {
   String currentUrl = '';
   bool _isLoading = true;
   bool _showComments = false;
-  double height = 0;
+  double _height = 0;
 
   @override
   void initState() {
@@ -80,7 +80,7 @@ class _WikiPageState extends State<WikiPage> {
                   visible: _showComments,
                   child: Comments(articleTitle: pageTitle, articleUrl: currentUrl, onHeight: (height) {
                     setState(() {
-                      height = height;
+                      _height = height;
                     });
                   })),
                 Positioned(
@@ -93,7 +93,7 @@ class _WikiPageState extends State<WikiPage> {
                   })),
                 ],
             ),
-        bottomNavigationBar: height >= 0.2 ? AddComment(articleTitle: pageTitle, articleUrl: currentUrl) : BottomBar(searchSelected: true),
+        bottomNavigationBar: _height >= 0.2 ? AddComment(articleTitle: pageTitle, articleUrl: currentUrl) : BottomBar(searchSelected: true),
       ),
     );
   }
