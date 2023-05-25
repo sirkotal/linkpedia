@@ -128,8 +128,38 @@ Although we didn't deliver any major features, we managed to close some importan
 
 Overall, we think this iteration's balance was relatively positive, taking into account the time constraints we experienced; nevertheless, we look forward to continuing to work on our product.
 
-## [Sprint 4]():
+## [Sprint 4](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/releases/tag/iteration-4.1):
 
 ## Retrospective
 
 ![Start](https://user-images.githubusercontent.com/93833262/236257960-f0d390a0-15cb-4982-a812-cb5ea551c228.png)
+
+![End](../images/sprint_final.png)
+
+We were very satisfied with the state of our app by the end of Sprint 4, since we actually managed to surpass our initial expectations and deliver a reasonable amount of new features.
+
+These include the comment section's frontend (which closed the comments feature), the comments reactions, the ability to edit your profile and a feature that allows you to follow specific articles.
+
+### WHAT WENT WELL
+
+- We wrapped up the comment section tasks that were left (frontend + reactions).
+- We replaced the planned "Follow Users" feature with a "Follow Pages" feature that we considered more valuable.
+- We added a feature that allows the user to edit his account information.
+- Despite some constraints and issues, we managed to pull through as a team and were able to complete addiional tasks and help each other.
+
+### WHAT WENT WRONG
+
+- We couldn't fix an error regarding the new Gherkin acceptance tests.
+- We had trouble increasing the unit tests' coverage.
+
+### WHAT TO DO NEXT
+
+- Fix the error with the Gherkin acceptance tests and test them properly.
+- Improve upon the existing tests and create more (both unit and acceptance tests).
+- Implement a custom profile feature that would allow the user to have a profile page and customize it.
+- Add the ability to read the articles in different languages.
+- Add notifications for a user's followed pages.
+- Take a final look at all the previous features we developed and check if there's room for improvement.
+
+Although there is still much to do and improve, we are very happy with the final state of our product and we would be glad to 
+keep expanding it in order to get it ready for distribution.

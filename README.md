@@ -15,9 +15,9 @@ You can find here details about the product (or mini-app or module), from a high
   * [Logical architecture](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/blob/main/docs/ArchitectureAndDesign.md#Logical-architecture)
   * [Physical architecture](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/blob/main/docs/ArchitectureAndDesign.md#Physical-architecture)
   * [Vertical prototype](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/releases/tag/iteration-0)
-* [Implementation]
-* [Test]
-* [Configuration and change management]
+* [Implementation](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/blob/main/src/linkpedia)
+* [Test](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/blob/main/src/linkpedia)
+* [Configuration and change management](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/blob/main)
 * [Project management](https://github.com/FEUP-LEIC-ES-2022-23/2LEIC04T5/blob/main/docs/ProjectManagement.md)
 
 So far, contributions are exclusively made by the initial team, but we hope to open them to the community, in all areas and topics: requirements, technologies, development, experimentation, testing, etc.
