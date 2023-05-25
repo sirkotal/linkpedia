@@ -135,8 +135,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                           hintText: 'Name',
                                           errorText: nameError,
                                         ),
-                                        validator: (val) =>
-                                            val!.isEmpty ? 'Enter a name' : null,
+                                        validator: (val) => val!.isEmpty
+                                            ? 'Enter a name'
+                                            : null,
                                         onChanged: (val) =>
                                             setState(() => name = val),
                                       ),
@@ -146,8 +147,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                           hintText: 'Email',
                                           errorText: emailError,
                                         ),
-                                        validator: (val) =>
-                                            val!.isEmpty ? 'Enter an email' : null,
+                                        validator: (val) => val!.isEmpty
+                                            ? 'Enter an email'
+                                            : null,
                                         onChanged: (val) =>
                                             setState(() => email = val),
                                       ),
@@ -174,8 +176,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                         validator: (val) => val != password
                                             ? 'Passwords do not match!'
                                             : null,
-                                        onChanged: (val) =>
-                                            setState(() => passwordConfirm = val),
+                                        onChanged: (val) => setState(
+                                            () => passwordConfirm = val),
                                       ),
                                       const SizedBox(height: 127),
                                       SizedBox(

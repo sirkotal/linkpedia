@@ -3,21 +3,19 @@ import 'package:linkpedia/screens/profile/edit_profile.dart';
 import 'package:linkpedia/screens/search_page/search_page.dart';
 import 'package:linkpedia/screens/wrapper.dart';
 import 'package:linkpedia/services/authentication.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:linkpedia/utils/no_transition_router.dart';
 import 'package:provider/provider.dart';
-import 'package:linkpedia/models/user.dart';
+import 'package:linkpedia/models/user.dart' as LUser;
 import 'package:linkpedia/services/user_db.dart';
-
-
-
 
 class BottomBar extends StatelessWidget {
   final bool homeSelected;
   final bool searchSelected;
-  User? user;
-  UserData? data;
+  LUser.User? user;
+  LUser.UserData? data;
 
-  final AuthService _auth = AuthService();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   BottomBar(
       {super.key, this.homeSelected = false, this.searchSelected = false});
@@ -28,7 +26,7 @@ class BottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    user = Provider.of<User?>(context);
+    user = Provider.of<LUser.User?>(context);
     final userId = user?.uid ?? '';
     loadData(userId);
     return BottomAppBar(
@@ -91,7 +89,14 @@ class BottomBar extends StatelessWidget {
                     context,
                     NoTransitionRouter(builder: (context) => const Wrapper()),
                     (Route<dynamic> route) => false);
-                 _auth.updateEmailAndSignOut(user! ,data!.email);
+
+                // Sign out the user
+                await _auth.signOut();
+
+                // Optionally, update the user's email if needed
+                if (user != null && data != null) {
+                  await user!.updateEmail(data!.email);
+                }
               },
             )
           ],

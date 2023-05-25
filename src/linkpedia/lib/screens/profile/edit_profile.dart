@@ -7,9 +7,6 @@ import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import 'package:linkpedia/services/user_db.dart';
 
-
-
-
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
 
@@ -62,7 +59,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     Container(
                       alignment: Alignment.centerLeft,
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.deepPurple, width: 2.0),
+                        border:
+                            Border.all(color: Colors.deepPurple, width: 2.0),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       child: Padding(
@@ -82,7 +80,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     Container(
                       alignment: Alignment.centerLeft,
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.deepPurple, width: 2.0),
+                        border:
+                            Border.all(color: Colors.deepPurple, width: 2.0),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       child: Padding(
@@ -102,7 +101,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     Container(
                       alignment: Alignment.centerLeft,
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.deepPurple, width: 2.0),
+                        border:
+                            Border.all(color: Colors.deepPurple, width: 2.0),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       child: Padding(
@@ -127,18 +127,21 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           name: _nameController.text,
                           email: _emailController.text,
                         );
-                        UserDatabaseService databaseService = UserDatabaseService(); // Create an instance
-                        await databaseService.updateUserData(user!.uid, userData);
-                        setState(() {
-            
-                        });
+                        UserDatabaseService databaseService =
+                            UserDatabaseService(); // Create an instance
+                        await databaseService.updateUserData(
+                            user!.uid, userData);
+                        setState(() {});
                       },
                       style: ButtonStyle(
-                          backgroundColor: const MaterialStatePropertyAll<Color>(
-                              Colors.deepPurple),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(17)))),
+                          backgroundColor:
+                              const MaterialStatePropertyAll<Color>(
+                                  Colors.deepPurple),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(17)))),
                       child: const Text('Save Changes'),
                     ),
                   ],
