@@ -156,7 +156,7 @@ class _CommentCardState extends State<CommentCard> {
             ),
           );
         }
-        return const Loading();
+        return const SizedBox();
       },
     );
   }
