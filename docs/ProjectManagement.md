@@ -25,7 +25,9 @@ The first iteration was in line with our expectations. We felt that we did bette
 - Redesign the physical architecture and domain model diagrams.
 - Review the existing user stories and acceptance tests.
 - Take a second look at all the things we got right and see if we can improve them even further.
+- Appropriate Home Page with Trending Pages and Following Pages.
 - Continue developing the app so that we can have a better, more complete product when the second iteration delivery comes around.
+
 
 Despite the issues we faced, we rised to the occasion and were able to deliver our first iteration succesfully; although far from perfect, we feel like we've created a solid basis for upcoming releases.
 
