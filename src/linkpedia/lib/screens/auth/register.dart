@@ -106,108 +106,115 @@ class _RegisterPageState extends State<RegisterPage> {
                               topRight: Radius.circular(63))),
                       child: Padding(
                           padding: const EdgeInsets.all(24.0),
-                          child: SingleChildScrollView(
-                            child: Center(
-                                child: Form(
-                              key: _formKey,
-                              child: Column(
-                                children: <Widget>[
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  TextFormField(
-                                    decoration: InputDecoration(
-                                      hintText: 'Username',
-                                      errorText: usernameError,
-                                    ),
-                                    validator: (val) => val!.isEmpty
-                                        ? 'Enter a username'
-                                        : null,
-                                    onChanged: (val) =>
-                                        setState(() => username = val),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  TextFormField(
-                                    decoration: InputDecoration(
-                                      hintText: 'Name',
-                                      errorText: nameError,
-                                    ),
-                                    validator: (val) =>
-                                        val!.isEmpty ? 'Enter a name' : null,
-                                    onChanged: (val) =>
-                                        setState(() => name = val),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  TextFormField(
-                                    decoration: InputDecoration(
-                                      hintText: 'Email',
-                                      errorText: emailError,
-                                    ),
-                                    validator: (val) =>
-                                        val!.isEmpty ? 'Enter an email' : null,
-                                    onChanged: (val) =>
-                                        setState(() => email = val),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  TextFormField(
-                                    obscureText: true,
-                                    decoration: InputDecoration(
-                                      hintText: 'Password',
-                                      errorText: passwordError,
-                                    ),
-                                    validator: (val) => val!.isEmpty
-                                        ? 'Enter a password'
-                                        : null,
-                                    onChanged: (val) =>
-                                        setState(() => password = val),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  TextFormField(
-                                    obscureText: true,
-                                    decoration: InputDecoration(
-                                      hintText: 'Confirm Password',
-                                      errorText: passwordConfirmError,
-                                    ),
-                                    validator: (val) => val != password
-                                        ? 'Passwords do not match!'
-                                        : null,
-                                    onChanged: (val) =>
-                                        setState(() => passwordConfirm = val),
-                                  ),
-                                  const SizedBox(height: 127),
-                                  SizedBox(
-                                    height: 50,
-                                    width: 300,
-                                    child: ElevatedButton(
-                                      onPressed: () async {
-                                        _register();
-                                      },
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                              const MaterialStatePropertyAll<
-                                                  Color>(Colors.deepPurple),
-                                          shape: MaterialStateProperty.all<
-                                                  RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          17)))),
-                                      child: const Text('REGISTER'),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 20),
-                                  ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.transparent,
-                                        foregroundColor: Colors.black,
-                                        elevation: 0,
+                          child: ListView(
+                            physics: const NeverScrollableScrollPhysics(),
+                            children: <Widget>[
+                              SingleChildScrollView(
+                                child: Center(
+                                    child: Form(
+                                  key: _formKey,
+                                  child: Column(
+                                    children: <Widget>[
+                                      const SizedBox(
+                                        height: 10,
                                       ),
-                                      onPressed: () => widget.toggleView(),
-                                      child: const Text(
-                                          'Already have an account? Log In')),
-                                ],
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                          hintText: 'Username',
+                                          errorText: usernameError,
+                                        ),
+                                        validator: (val) => val!.isEmpty
+                                            ? 'Enter a username'
+                                            : null,
+                                        onChanged: (val) =>
+                                            setState(() => username = val),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                          hintText: 'Name',
+                                          errorText: nameError,
+                                        ),
+                                        validator: (val) => val!.isEmpty
+                                            ? 'Enter a name'
+                                            : null,
+                                        onChanged: (val) =>
+                                            setState(() => name = val),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                          hintText: 'Email',
+                                          errorText: emailError,
+                                        ),
+                                        validator: (val) => val!.isEmpty
+                                            ? 'Enter an email'
+                                            : null,
+                                        onChanged: (val) =>
+                                            setState(() => email = val),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      TextFormField(
+                                        obscureText: true,
+                                        decoration: InputDecoration(
+                                          hintText: 'Password',
+                                          errorText: passwordError,
+                                        ),
+                                        validator: (val) => val!.isEmpty
+                                            ? 'Enter a password'
+                                            : null,
+                                        onChanged: (val) =>
+                                            setState(() => password = val),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      TextFormField(
+                                        obscureText: true,
+                                        decoration: InputDecoration(
+                                          hintText: 'Confirm Password',
+                                          errorText: passwordConfirmError,
+                                        ),
+                                        validator: (val) => val != password
+                                            ? 'Passwords do not match!'
+                                            : null,
+                                        onChanged: (val) => setState(
+                                            () => passwordConfirm = val),
+                                      ),
+                                      const SizedBox(height: 127),
+                                      SizedBox(
+                                        height: 50,
+                                        width: 300,
+                                        child: ElevatedButton(
+                                          onPressed: () async {
+                                            _register();
+                                          },
+                                          style: ButtonStyle(
+                                              backgroundColor:
+                                                  const MaterialStatePropertyAll<
+                                                      Color>(Colors.deepPurple),
+                                              shape: MaterialStateProperty.all<
+                                                      RoundedRectangleBorder>(
+                                                  RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              17)))),
+                                          child: const Text('REGISTER'),
+                                        ),
+                                      ),
+                                      const SizedBox(height: 20),
+                                      ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.transparent,
+                                            foregroundColor: Colors.black,
+                                            elevation: 0,
+                                          ),
+                                          onPressed: () => widget.toggleView(),
+                                          child: const Text(
+                                              'Already have an account? Log In')),
+                                    ],
+                                  ),
+                                )),
                               ),
-                            )),
+                            ],
                           )),
                     ),
                   )

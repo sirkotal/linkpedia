@@ -98,3 +98,4 @@ class AuthService {
     prefs.setBool('rememberMe', false);
   }
 }
+
