@@ -12,13 +12,14 @@ import 'package:linkpedia/services/user_db.dart';
 class BottomBar extends StatelessWidget {
   final bool homeSelected;
   final bool searchSelected;
+  final bool profileSelected;
   LUser.User? user;
   LUser.UserData? data;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   BottomBar(
-      {super.key, this.homeSelected = false, this.searchSelected = false});
+      {super.key, this.homeSelected = false, this.searchSelected = false, this.profileSelected = false});
 
   void loadData(String userId) async {
     data = await UserDatabaseService().getUserData(userId);
@@ -68,7 +69,7 @@ class BottomBar extends StatelessWidget {
                 style: TextStyle(
                     fontFamily: 'MaterialIcons',
                     fontWeight:
-                        searchSelected ? FontWeight.bold : FontWeight.normal,
+                        profileSelected ? FontWeight.bold : FontWeight.normal,
                     fontSize: 36.0,
                     color: Colors.deepPurple),
               ),
@@ -85,18 +86,13 @@ class BottomBar extends StatelessWidget {
               color: Colors.deepPurple,
               iconSize: 36.0,
               onPressed: () async {
+                // Sign out the user
+                await _auth.signOut();
                 Navigator.pushAndRemoveUntil(
                     context,
                     NoTransitionRouter(builder: (context) => const Wrapper()),
                     (Route<dynamic> route) => false);
-
-                // Sign out the user
-                await _auth.signOut();
-
                 // Optionally, update the user's email if needed
-                if (user != null && data != null) {
-                  await user!.updateEmail(data!.email);
-                }
               },
             )
           ],

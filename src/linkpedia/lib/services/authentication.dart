@@ -97,18 +97,5 @@ class AuthService {
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('rememberMe', false);
   }
-
-  void updateEmailAndSignOut(User user, String newEmail) async {
-    try {
-      // Update email address
-      await user.updateEmail(newEmail);
-
-      // Sign out the user
-      await FirebaseAuth.instance.signOut();
-    } catch (e) {
-      // Handle error
-      print('Failed to update email and sign out: $e');
-    }
-  }
 }
 

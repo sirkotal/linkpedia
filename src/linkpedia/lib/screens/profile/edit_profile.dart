@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:linkpedia/models/user.dart';
 import 'package:linkpedia/shared/top_bar.dart';
@@ -18,6 +20,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   User? user = null;
 
   @override
@@ -118,10 +122,43 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       controller: _emailController,
                       decoration: InputDecoration(labelText: 'Email'),
                     ),
+                    const SizedBox(height: 32),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      decoration: BoxDecoration(
+                        border:
+                            Border.all(color: Colors.deepPurple, width: 2.0),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text(
+                          'Enter Password to Confirm Changes',
+                          style: const TextStyle(
+                              fontSize: 20.0, fontFamily: 'Times New Roman'),
+                        ),
+                      ),
+                    ),
+                    TextFormField(
+                      controller: _passwordController,
+                      decoration: InputDecoration(labelText: 'Password'),
+                      validator: (val) => val!.isEmpty ? 'Enter a password' : null,
+                      obscureText: true, 
+                    ),
                     const SizedBox(height: 16.0),
                     ElevatedButton(
-                      onPressed: () async {
-                        UserData userData = UserData(
+                      onPressed: () async {        
+                        bool flag = false;
+                        print(user);
+                        print(_passwordController.text);
+                        print(_emailController.text);
+                        if (user != null && _passwordController != null && _emailController != null) {
+                          flag = await user!.updateEmail(_emailController.text, _passwordController.text);
+                          print('here');
+                        }
+                        print(flag);
+                        if (flag){
+                          UserData userData = UserData(
                           uid: user!.uid,
                           username: _usernameController.text,
                           name: _nameController.text,
@@ -132,6 +169,42 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         await databaseService.updateUserData(
                             user!.uid, userData);
                         setState(() {});
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Profile Updated with Sucess!'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Profile Update Failed'),
+                                content: const Text(
+                                    'Please make sure the provided password is correct.'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
                       },
                       style: ButtonStyle(
                           backgroundColor:
@@ -150,6 +223,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
             ),
           ],
         ),
-        bottomNavigationBar: BottomBar());
+        bottomNavigationBar: BottomBar(profileSelected: true));
   }
 }
