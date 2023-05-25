@@ -94,30 +94,39 @@ class _WikiPageState extends State<WikiPage> {
         body: Stack(
               children: [ 
                 WebViewWidget(controller: _webViewController),
-                FutureBuilder<bool>(
-                    future: checkFollowStatus(pageTitle, userId),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        _follow = snapshot.data!;
-                        return IconButton(
-                          onPressed: () async {
-                            if (_follow) {
-                              await FollowDatabaseService.removePage(pageTitle, userId);
-                            } else {
-                              await FollowDatabaseService.addPage(pageTitle, userId);
-                            }
-                            setState(() {
-                              _follow = !_follow;
-                            });
-                          },
-                          icon: const Icon(Icons.turned_in),
-                          color: _follow ? Colors.deepPurple : Colors.black,
-                        );
-                      }
-
-                      return const SizedBox();
-                    },
-                  ),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: FutureBuilder<bool>(
+                      future: checkFollowStatus(pageTitle, userId),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          _follow = snapshot.data!;
+                          return CircleAvatar(
+                            backgroundColor: Colors.deepPurple,
+                            radius: 30,
+                            child: IconButton(
+                              onPressed: () async {
+                                if (_follow) {
+                                  await FollowDatabaseService.removePage(pageTitle, userId);
+                                } else {
+                                  await FollowDatabaseService.addPage(pageTitle, userId);
+                                }
+                                setState(() {
+                                  _follow = !_follow;
+                                });
+                              },
+                              iconSize: 30,
+                              icon: _follow ? Icon(Icons.turned_in) : Icon(Icons.turned_in_not),
+                              color: Colors.white,
+                            ),
+                          );
+                        }
+                
+                        return const SizedBox();
+                      },
+                    ),
+                ),
                 Visibility(
                   visible: _showComments,
                   child: Comments(articleTitle: pageTitle, articleUrl: currentUrl, onHeight: (height) {

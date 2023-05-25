@@ -38,19 +38,6 @@ class _FloatingButtonsState extends State<FloatingButtons> {
             ),
           ),
         ),
-        /*Visibility(
-          visible: _showButtons,
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 5.0),
-            child: FloatingActionButton(
-              onPressed: () {
-                setState(() {
-                });
-              },
-              child: const Icon(Icons.turned_in),
-            ),
-          ),
-        ),*/
         Container(
           margin: const EdgeInsets.symmetric(vertical: 5.0),
           child: FloatingActionButton(
