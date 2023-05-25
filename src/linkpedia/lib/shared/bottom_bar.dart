@@ -4,18 +4,33 @@ import 'package:linkpedia/screens/search_page/search_page.dart';
 import 'package:linkpedia/screens/wrapper.dart';
 import 'package:linkpedia/services/authentication.dart';
 import 'package:linkpedia/utils/no_transition_router.dart';
+import 'package:provider/provider.dart';
+import 'package:linkpedia/models/user.dart';
+import 'package:linkpedia/services/user_db.dart';
+
+
+
 
 class BottomBar extends StatelessWidget {
   final bool homeSelected;
   final bool searchSelected;
+  User? user;
+  UserData? data;
 
   final AuthService _auth = AuthService();
 
   BottomBar(
       {super.key, this.homeSelected = false, this.searchSelected = false});
 
+  void loadData(String userId) async {
+    data = await UserDatabaseService().getUserData(userId);
+  }
+
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<User?>(context);
+    final userId = user?.uid ?? '';
+    loadData(userId);
     return BottomAppBar(
       child: Container(
         decoration: const BoxDecoration(
@@ -76,7 +91,7 @@ class BottomBar extends StatelessWidget {
                     context,
                     NoTransitionRouter(builder: (context) => const Wrapper()),
                     (Route<dynamic> route) => false);
-                await _auth.signOut();
+                 _auth.updateEmailAndSignOut(user! ,data!.email);
               },
             )
           ],
